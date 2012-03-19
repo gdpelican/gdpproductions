@@ -1,0 +1,36 @@
+
+<p id="notice"><%= notice %></p>
+
+<% if !@show.venue.latitude.nil? and !@show.venue.longitude.nil? %>
+<div id="latlng" class="hidden"><%= @show.venue.latitude + ';' + @show.venue.longitude %></div>
+<% end %>
+
+<% if !@show.ticket_link.nil? and @show.end_date >= Date.new %>
+<div id="ticketLink" class="hidden"><%=  @show.ticket_link %></div>
+<% end %>
+
+<div class="showPage">
+  <div class="showHeaderDates"><%= @show.start_date.strftime("%b %e").tr('0', 'O') %> - <%= @show.end_date.strftime("%b %e %Y").tr('0', 'O') %></div>
+  <div class="showHeader">
+    <div id="mapInfo" class="showMapInfo">
+      <%= @show.venue.name %><br/>
+      <%= @show.venue.address.tr('0', 'O') %><br/>
+    </div>
+    <div class="showThumb"><%= image_tag @show.thumb.url %></div>
+    <div id="map" class="showMap"></div>
+  </div>
+  <% if !@show.pictures.empty? %>
+  <div class="showGallery scroller">
+    <%   @show.pictures.each do |p| %>
+    <%=   link_to image_tag(p.picture.url(:thumb)), p.picture.url, :rel  => 'prettyphoto[show]' %>
+    <%   end %>
+  </div>
+  <% end %>
+  <div class="showDescription"><%= raw RedCloth.new(@show.description).to_html %></div>
+
+  <% if session[:id] %>
+    <%= link_to 'Edit', edit_show_path(@show) %> |
+    <%= link_to 'Back', shows_path %>
+  <% end %>
+
+</div>
