@@ -21,7 +21,7 @@ $(document).ready(function() {
         if($('#map').length)
             $.getScript('http://maps.google.com/maps/api/js?sensor=false&callback=renderMap');
 
-        //$('.scroller').lionbars();
+        $('.scroller').lionbars();
 
         $("a[rel^='prettyPhoto']").prettyPhoto({
             theme: 'dark_rounded',
