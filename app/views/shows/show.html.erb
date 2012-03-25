@@ -22,7 +22,7 @@
   <% if !@show.pictures.empty? %>
   <div class="showGallery scroller">
     <%   @show.pictures.each do |p| %>
-    <%=   link_to image_tag(p.picture.url(:thumb), :class => 'rounded'), p.picture.url, :rel  => 'prettyphoto[show]' %>
+    <%=   link_to image_tag(p.picture.url(:thumb), :class => 'roundedNoIE'), p.picture.url, :rel  => 'prettyphoto[show]' %>
     <%   end %>
   </div>
   <% end %>
