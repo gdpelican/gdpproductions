@@ -4,13 +4,13 @@ class Picture < ActiveRecord::Base
   
   validates_presence_of :alt 
   validates_presence_of :show_id
-  validates_presence_of :cover_photo_ind
+  #validates_presence_of :cover_photo_ind
   
   validates_attachment_presence :picture
 
   has_attached_file :picture,
      :styles => {
-       :original => "1024x800#",
+       :original => "1024x800",
        :thumb  => "250x250",
        :tiny => "100x100"},
      :storage => :s3,

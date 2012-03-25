@@ -5,13 +5,13 @@
 <div id="latlng" class="hidden"><%= @show.venue.latitude + ';' + @show.venue.longitude %></div>
 <% end %>
 
-<% if !@show.ticket_link.nil? and @show.end_date >= Date.new %>
-<div id="ticketLink" class="hidden"><%=  @show.ticket_link %></div>
+<% if !@show.ticket_link.nil? and @show.end_date >= Date.today %>
+  <div id="ticketLink" class="hidden"><%=  @show.ticket_link %></div>
 <% end %>
 
 <div class="showPage">
   <div class="showHeaderDates"><%= @show.start_date.strftime("%b %e").tr('0', 'O') %> - <%= @show.end_date.strftime("%b %e %Y").tr('0', 'O') %></div>
-  <div class="showHeader">
+  <div class="showHeader rounded">
     <div id="mapInfo" class="showMapInfo">
       <%= @show.venue.name %><br/>
       <%= @show.venue.address.tr('0', 'O') %><br/>
@@ -22,7 +22,7 @@
   <% if !@show.pictures.empty? %>
   <div class="showGallery scroller">
     <%   @show.pictures.each do |p| %>
-    <%=   link_to image_tag(p.picture.url(:thumb)), p.picture.url, :rel  => 'prettyphoto[show]' %>
+    <%=   link_to image_tag(p.picture.url(:thumb), :class => 'rounded'), p.picture.url, :rel  => 'prettyphoto[show]' %>
     <%   end %>
   </div>
   <% end %>

@@ -12,6 +12,7 @@ body, html {
 	color: white;
 	background-color: black;
 	overflow: hidden;
+        font-family: Arial, Helvetica, sans-serif;
 }
 
 #gdp {
@@ -51,12 +52,12 @@ body, html {
 #content {
         position: absolute;
         background-color: black;
-        background-color: rgba(0, 0, 0, .75);
-        filter:alpha(opacity=50);
+        background-color: rgba(0, 0, 0, .7);
+        filter:alpha(opacity=70);
 	padding: .5em;
         margin-left: 2em;
         margin-top: 5em;
-	box-shadow: 0 0 .5em .5em rgba(0, 0, 0, .75);
+	box-shadow: 0 0 .5em .5em rgba(0, 0, 0, .7);
 	left: 2em;
         padding-top: 1.5em;
 	top: 0;
@@ -161,7 +162,6 @@ body, html {
         margin: auto;
         text-align: center;
         border: 2px solid #AAD;
-        border-radius: 5px;
 }
 
 #woThumb img {
@@ -188,7 +188,6 @@ body, html {
 .show {
 	height: 10em;
 	position: relative;
- 	border-radius: .5em;
 	border: .15em solid white;
 	margin: 1.5em;
 }
@@ -252,7 +251,6 @@ h2 {
 .showHeader {
     position: relative;
     border: 2px solid white;
-    border-radius: 10px;
     padding: .5em;
 }
 
@@ -317,7 +315,6 @@ h2 {
     height: 2.55em;
     padding: .25em;
     border: 2px solid white;
-    border-radius: 5px;
 }
 
 .showGallery img:hover {
@@ -381,4 +378,8 @@ form {
     position: relative;
     right: 1em;
 
+}
+
+.rounded {
+    border-radius: .5em;
 }

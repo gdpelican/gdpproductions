@@ -1,15 +1,27 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+$(window).load(function() {
+    $('.scroller').lionbars();
+    $('.scroller').show();
+    $('#image').fadeIn(5000);
+
+    curvyCorners({
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true
+        }, '.rounded');
+});
+
 $(document).ready(function() {
-	
-	$('#whatson')
+
+    	$('#whatson')
 		//.height($('#woTitle').width())
 		.css('padding-left', $('#woTitle').height())
 		.click(function() { window.location = "/shows/current"; });
-	
-	$('#image').fadeIn(5000);
-	
+		
 	$('.show').hover(
 		function() { $(this).addClass('hover'); },
 		function() { $(this).removeClass('hover'); }
@@ -21,15 +33,12 @@ $(document).ready(function() {
         if($('#map').length)
             $.getScript('http://maps.google.com/maps/api/js?sensor=false&callback=renderMap');
 
-        $('.scroller').lionbars();
-
         $("a[rel^='prettyPhoto']").prettyPhoto({
             theme: 'dark_rounded',
             horizontal_padding: 20,
             show_title: true,
             opacity: .25
         });
-
 });
 
 function renderMap() {
@@ -38,12 +47,12 @@ function renderMap() {
         var latlng = $('#latlng').html().split(';');
         var location = new google.maps.LatLng(latlng[0], latlng[1]);
         var map = new google.maps.Map(document.getElementById('map'), {
-            center: new google.maps.LatLng(location.lat() + .0002, location.lng() - .0015),
             zoom: 17,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true,
             mapTypeControl: false
         });
+        map.setCenter(new google.maps.LatLng(location.lat() + .0002, location.lng() - .0015));
 
         makeMarker(location, map);
 
