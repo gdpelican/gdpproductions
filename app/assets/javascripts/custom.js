@@ -2,17 +2,20 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(window).load(function() {
-    $('.scroller').lionbars();
-    $('.scroller').show();
+
     $('#image').fadeIn(5000);
 
-    curvyCorners({
-          tl: { radius: 10 },
-          tr: { radius: 10 },
-          bl: { radius: 10 },
-          br: { radius: 10 },
-          antiAlias: true
-        }, '.rounded');
+    if($.browser.msie)
+        curvyCorners({
+              tl: { radius: 10 },
+              tr: { radius: 10 },
+              bl: { radius: 10 },
+              br: { radius: 10 },
+              antiAlias: true
+            }, '.rounded');
+    else
+        $('.scroller').lionbars();
+    
 });
 
 $(document).ready(function() {

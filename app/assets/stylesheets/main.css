@@ -66,6 +66,10 @@ body, html {
 	text-align: right;
 }
 
+.lbwrap {
+    overflow: hidden;
+}
+
 #content * {
     filter: alpha(opacity=100);
 }
