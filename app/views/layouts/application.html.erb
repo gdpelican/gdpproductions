@@ -17,7 +17,7 @@
 	<div id="menu"><%= render :template => 'links/index' %></div>
 	<div id="header"><%= @title %></div>
         <div id="content" class="scroller"><%= yield %></div>
-	<div id="whatson"><%= render :template => 'whatson/index' %></div>
+	<% if Show.current.end_date >= Date.today %><div id="whatson"><%= render :template => 'whatson/index' %></div><% end %>
 </div>
 
 <div id="image" class="hidden">

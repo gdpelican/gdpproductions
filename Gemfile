@@ -40,6 +40,9 @@ gem 'high_voltage'
 #JS compressor
 gem 'uglifier'
 
+#New Relic
+gem 'newrelic_rpm'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

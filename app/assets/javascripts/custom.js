@@ -5,7 +5,7 @@ $(window).load(function() {
 
     $('#image').fadeIn(5000);
 
-    if($.browser.msie)
+    if($.browser.msie) {
         curvyCorners({
               tl: { radius: 10 },
               tr: { radius: 10 },
@@ -13,6 +13,8 @@ $(window).load(function() {
               br: { radius: 10 },
               antiAlias: true
             }, '.rounded');
+        $('#woTitle').css('bottom', '-.75em').css('right', 0);
+    }
     else
         $('.scroller').lionbars();
     
