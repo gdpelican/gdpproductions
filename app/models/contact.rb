@@ -1,0 +1,25 @@
+class Contact
+  include ActiveModel::Conversion
+  include ActiveModel::Validations
+
+  attr_accessor :email, :message, :name, :subject
+
+  validates :email,   :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },
+                      :presence => true
+  validates :message, :presence => true
+  validates :name,    :presence => true
+  validates :subject, :presence => true
+
+  def save
+    if self.valid?
+      ContactMailer.contact_email(self).deliver
+      return true
+    end
+    return false
+  end
+
+  def persisted?
+    false
+  end
+
+end

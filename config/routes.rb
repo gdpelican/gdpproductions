@@ -9,6 +9,7 @@ GDP::Application.routes.draw do
 
   resources :venues, :shows, :pictures, :links, :pages
   resources :sessions, :only => :create
+  resource :contact, :only => [:show, :create]
 
   #resources :people, :only => :new, :create
 

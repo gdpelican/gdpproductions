@@ -10,16 +10,16 @@
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
-#new_contact_us_contact p {
+.formtastic p {
     padding: 0 2em;
 }
 
-#new_contact_us_contact li {
+.formtastic li {
     list-style: none;
     padding-right: 10em;
 }
 
-#new_contact_us_contact .string input, #new_contact_us_contact .text textarea {
+.formtastic .string input, .formtastic .text textarea {
       width: 30em;
       margin: 1em;
       padding: .25em;
@@ -33,16 +33,16 @@
       vertical-align: top;
   }
 
-#new_contact_us_contact .text textarea {
+.formtastic .text textarea {
  height: 25em;
 }
 
-#new_contact_us_contact .string label, #new_contact_us_contact .text label {
+.formtastic .string label, .formtastic .text label {
     position: relative;
     top: 1em;
 }
 
-#contact_us_contact_submit {
+.formtastic {
     padding: .25em 1em;
     margin: 1em;
 }

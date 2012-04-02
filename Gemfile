@@ -45,8 +45,7 @@ gem 'uglifier'
 
 #Contact form
 gem 'formtastic'
-gem 'contact_us'
-
+    
 # Use unicorn as the web server
 # gem 'unicorn'
 
