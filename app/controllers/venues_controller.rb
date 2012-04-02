@@ -1,4 +1,4 @@
-class VenuesController < ApplicationController
+class VenuesController < ProtectedController
   # GET /venues
   # GET /venues.xml
   def index

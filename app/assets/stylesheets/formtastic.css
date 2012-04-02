@@ -1,0 +1,48 @@
+/* 
+    Document   : formtastic
+    Created on : Apr 1, 2012, 7:56:46 PM
+    Author     : KIESJL
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+#new_contact_us_contact p {
+    padding: 0 2em;
+}
+
+#new_contact_us_contact li {
+    list-style: none;
+    padding-right: 10em;
+}
+
+#new_contact_us_contact .string input, #new_contact_us_contact .text textarea {
+      width: 30em;
+      margin: 1em;
+      padding: .25em;
+      font-size: 13px;
+      border-radius: .75em;
+      box-shadow: 1px 1px #CCC;
+      border: none;
+      color: white;
+      background-color: black;
+      opacity: .5;
+      vertical-align: top;
+  }
+
+#new_contact_us_contact .text textarea {
+ height: 25em;
+}
+
+#new_contact_us_contact .string label, #new_contact_us_contact .text label {
+    position: relative;
+    top: 1em;
+}
+
+#contact_us_contact_submit {
+    padding: .25em 1em;
+    margin: 1em;
+}

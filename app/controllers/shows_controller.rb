@@ -1,4 +1,4 @@
-class ShowsController < ApplicationController
+class ShowsController < ProtectedController
   
   before_filter :oneShow, :only => [:show]
   before_filter :anyShow, :only => [:index]

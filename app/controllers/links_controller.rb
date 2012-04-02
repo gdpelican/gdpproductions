@@ -1,4 +1,4 @@
-class LinksController < ApplicationController
+class LinksController < ProtectedController
   # GET /links
   # GET /links.xml
   def index

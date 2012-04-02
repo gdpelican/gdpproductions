@@ -1,4 +1,4 @@
-class PicturesController < ApplicationController
+class PicturesController < ProtectedController
   
   # GET /pictures
   # GET /pictures.xml

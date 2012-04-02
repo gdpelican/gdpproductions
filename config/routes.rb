@@ -1,20 +1,21 @@
 GDP::Application.routes.draw do
 
-  root :to => 'high_voltage/pages#show', :id => 'about'
-match 'textile_preview' => 'textile_preview#show'
-  match 'contact' => 'high_voltage/pages#show', :id => 'contact'
+  root :to => 'shows#index'
+  match 'textile_preview' => 'textile_preview#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
   match 'textile_preview' => 'textile_preview#show'
-  match 'textile_preview' => 'textile_preview#show'
 
-  resources :venues, :shows, :pictures, :links
+  resources :venues, :shows, :pictures, :links, :pages
   resources :sessions, :only => :create
+
   #resources :people, :only => :new, :create
 
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#destroy'
+
+  match 'about' => 'high_voltage/pages#show', :id => 'about'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

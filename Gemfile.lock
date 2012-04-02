@@ -38,9 +38,14 @@ GEM
       uuidtools (~> 2.1)
     builder (3.0.0)
     cocaine (0.2.1)
+    contact_us (0.2.0)
+      formtastic (>= 2.1.0)
+      rails (>= 3.0.0)
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
+    formtastic (2.1.1)
+      actionpack (~> 3.0)
     geocoder (1.1.1)
     heroku (2.21.2)
       launchy (>= 0.3.2)
@@ -136,6 +141,8 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   aws-sdk
+  contact_us
+  formtastic
   geocoder
   heroku
   high_voltage

@@ -76,8 +76,4 @@ class PeopleController < ApplicationController
     end
   end
 
-  def require_login
-    
-  end
-
 end

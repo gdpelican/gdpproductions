@@ -18,5 +18,9 @@ module ApplicationHelper
   def logout_path
     '/logout'
   end
+
+  def message_sent_path
+    '/high_voltage/pages#show, :id => "sent"'
+  end
   
 end

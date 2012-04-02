@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   
-  before_filter :require_login, :only => :destroy
   before_filter :require_logout, :only => [:new, :create]
 
   # GET /sessions
@@ -33,8 +32,11 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  def require_login
-    
+  def require_logout
+    if session[:id]
+      flash[:error] = 'You must be logged out to complete this action'
+      redirect_to root_url
+    end
   end
 
 end
