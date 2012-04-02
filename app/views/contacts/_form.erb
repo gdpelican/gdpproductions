@@ -1,9 +1,0 @@
-<% @title = 'Contact Us' %>
-<%= semantic_form_for @contact, :url => contact_path do |f| %>
-<p><%= @fields['greeting'] %></p>
-  <%= f.input :name, :label => @fields['name'] %>
-  <%= f.input :email, :label => @fields['email'] %>
-  <%= f.input :subject, :label => @fields['subject'] %>
-  <%= f.input :message, :as => :text, :label => @fields['message'] %>
-  <%= f.action :submit, :label => @fields['submit'], :button_html => { :alt => @fields['submit'], :title => @fields['submit'] } %>
-<% end %>

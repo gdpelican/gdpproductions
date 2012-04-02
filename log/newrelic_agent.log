@@ -1,0 +1,21 @@
+# Logfile created on 2012-03-26 22:30:58 -0400 by logger.rb/25413
+[03/26/12 22:30:58 -0400 EXELON739165 (4332)] INFO : Dispatcher: webrick
+[03/26/12 22:30:58 -0400 EXELON739165 (4332)] INFO : Application: development
+[03/26/12 22:30:58 -0400 EXELON739165 (4332)] ERROR : No license key found.  Please edit your newrelic.yml file and insert your license key.
+[03/26/12 22:30:58 -0400 EXELON739165 (4332)] INFO : New Relic Ruby Agent 3.3.2.1 Initialized: pid = 4332
+[03/26/12 22:30:58 -0400 EXELON739165 (4332)] INFO : Agent Log at C:/Sites/GDP/log/newrelic_agent.log
+[03/29/12 00:43:22 -0400 EXELON739165 (9588)] INFO : Dispatcher: webrick
+[03/29/12 00:43:22 -0400 EXELON739165 (9588)] INFO : Application: development
+[03/29/12 00:43:22 -0400 EXELON739165 (9588)] ERROR : No license key found.  Please edit your newrelic.yml file and insert your license key.
+[03/29/12 00:43:22 -0400 EXELON739165 (9588)] INFO : New Relic Ruby Agent 3.3.2.1 Initialized: pid = 9588
+[03/29/12 00:43:22 -0400 EXELON739165 (9588)] INFO : Agent Log at C:/Sites/GDP/log/newrelic_agent.log
+[03/30/12 18:54:33 -0400 EXELON739165 (4936)] INFO : Dispatcher: webrick
+[03/30/12 18:54:33 -0400 EXELON739165 (4936)] INFO : Application: development
+[03/30/12 18:54:33 -0400 EXELON739165 (4936)] ERROR : No license key found.  Please edit your newrelic.yml file and insert your license key.
+[03/30/12 18:54:33 -0400 EXELON739165 (4936)] INFO : New Relic Ruby Agent 3.3.2.1 Initialized: pid = 4936
+[03/30/12 18:54:33 -0400 EXELON739165 (4936)] INFO : Agent Log at C:/Sites/GDP/log/newrelic_agent.log
+[04/01/12 19:14:42 -0400 EXELON739165 (6344)] INFO : Dispatcher: webrick
+[04/01/12 19:14:42 -0400 EXELON739165 (6344)] INFO : Application: development
+[04/01/12 19:14:42 -0400 EXELON739165 (6344)] ERROR : No license key found.  Please edit your newrelic.yml file and insert your license key.
+[04/01/12 19:14:42 -0400 EXELON739165 (6344)] INFO : New Relic Ruby Agent 3.3.2.1 Initialized: pid = 6344
+[04/01/12 19:14:42 -0400 EXELON739165 (6344)] INFO : Agent Log at C:/Sites/GDP/log/newrelic_agent.log
