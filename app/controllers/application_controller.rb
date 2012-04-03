@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
     @links = Link.all
     @current = Show.current
-    @picture_mode = 'current'
+    @picture_mode = 'any'
     
   end
   

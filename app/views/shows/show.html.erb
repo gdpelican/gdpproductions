@@ -1,6 +1,4 @@
 
-<p id="notice"><%= notice %></p>
-
 <% if !@show.venue.latitude.nil? and !@show.venue.longitude.nil? %>
 <div id="latlng" class="hidden"><%= @show.venue.latitude + ';' + @show.venue.longitude %></div>
 <% end %>

@@ -1,6 +1,6 @@
 module ApplicationHelper
   
-  def getPicture
+  def get_picture
     case @picture_mode
       when 'any'
         @picture = Picture.random(nil)
