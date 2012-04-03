@@ -391,6 +391,7 @@ h2 {
     text-align: center;
     border-radius: .5em;
     filter:alpha(opacity=40);
+    color: white;
 }
 
 #notice {
