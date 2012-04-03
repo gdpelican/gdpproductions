@@ -21,6 +21,10 @@
           <% if flash[:error] %><div id="error" class="flash"><%= flash[:error] %></div> <% end %>
           <%= yield %>
         </div>
+        <ul id="actions">
+          <li id="minimize"></li>
+          <!--<li id="changePicture" class="hidden">Change Picture</li>-->
+        </ul>
 	<% if Show.current.end_date >= Date.today %><div id="whatson"><%= render :template => 'whatson/index' %></div><% end %>
 </div>
 

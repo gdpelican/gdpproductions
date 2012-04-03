@@ -1,15 +1,17 @@
 class ShowsController < ProtectedController
   
-  before_filter :oneShow, :only => [:show]
-  before_filter :anyShow, :only => [:index]
+  before_filter :one_show, :only => [:show]
+  before_filter :any_show, :only => [:index]
 
-  def oneShow
-    if (params[:id].match(/\A[+-]?\d+?(\.\d+)?\Z/) != nil)
+  def one_show
+    if params[:id].is_a? Integer
       @picture_mode = params[:id]
+    else
+      @picture_mode = 'current'
     end
   end
   
-  def anyShow
+  def any_show
     @picture_mode = 'any'
   end
   

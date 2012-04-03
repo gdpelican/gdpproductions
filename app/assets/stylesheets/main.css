@@ -48,6 +48,7 @@ li {
         text-align: right;
         font-size: 3em;
         font-family: "rounded", Helvetica;
+        text-shadow: 0, 0, 0, -4px 4px;
         text-shadow: rgba(0,0,0,.75) -4px 4px rgba(0,0,0,1);
 }
 
@@ -182,9 +183,27 @@ li {
 	z-index: -1;
 }
 
+#actions {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-family: "rounded", Helvetica;
+    background-color: rgba(0,0,0,.7);
+    box-shadow: 0 0 .5em .5em rgba(0, 0, 0, .7);
+}
+
+#actions li {
+    padding: .25em;
+}
+
+#actions li:hover {
+    color: #AAD;
+}
+
 #image img {
 	width: 100%;
 	height: 100%;
+
 }.hidden {
 	display: none;
 }
@@ -360,7 +379,7 @@ h2 {
 }
 
 .hover {
-	border-color: #AAD;
+    border-color: #AAD;
 }
 
 #loggedin {

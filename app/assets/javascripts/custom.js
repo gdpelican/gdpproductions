@@ -17,7 +17,9 @@ $(window).load(function() {
     }
     else
         $('.scroller').lionbars();
-    
+
+    $('#minimize').html('Hide Content').click(toggleContent);
+
 });
 
 $(document).ready(function() {
@@ -44,7 +46,22 @@ $(document).ready(function() {
             show_title: true,
             opacity: .25
         });
+
 });
+
+function toggleContent() {
+    $('#content, #header').fadeToggle('slow', 'swing');
+    switch($('#minimize').html()) {
+        case 'Hide Content':
+            $('#minimize').html('Show Content');
+            $('#changePicture').show();
+            break;
+        case 'Show Content': 
+            $('#minimize').html('Hide Content');
+            $('#changePicture').hide();
+        break;
+    }
+}
 
 function renderMap() {
 

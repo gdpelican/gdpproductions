@@ -34,7 +34,7 @@
   }
 
 .formtastic .text textarea {
- height: 25em;
+    height: 25em;
 }
 
 .formtastic .string label, .formtastic .text label {
