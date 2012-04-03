@@ -4,9 +4,9 @@ class ShowsController < ProtectedController
   before_filter :any_show, :only => [:index]
 
   def one_show
-    if params[:id].is_a? Integer
-      @picture_mode = params[:id]
-    else
+    begin
+      @picture_mode = Integer(params[:id])
+    rescue
       @picture_mode = 'current'
     end
   end
