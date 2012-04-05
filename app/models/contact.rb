@@ -10,6 +10,12 @@ class Contact
   validates :name,    :presence => true
   validates :subject, :presence => true
 
+  def initialize(attributes = {})
+    attributes.each do |key, value|
+      self.send("#{key}=", value)
+    end
+  end
+  
   def save
     if self.valid?
       ContactMailer.contact_email(self).deliver

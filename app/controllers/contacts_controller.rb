@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     if @contact.save
       flash[:notice] = @fields['success']
     else
-      flash[:error] = @fields['error']
+      flash[:error] = @contact.email
     end
     render :show
   end
@@ -26,6 +26,7 @@ class ContactsController < ApplicationController
     @fields['submit'] = 'Send!'
     @fields['success'] = 'Message successfully sent'
     @fields['error'] = 'Sorry, something went wrong! Please try again in a few minutes'
+    @fields['recipient'] = 'james.kiesel@gmail.com'
   end
 
 end
