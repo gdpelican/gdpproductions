@@ -13,6 +13,7 @@ body, html {
 	background-color: black;
 	overflow: hidden;
         font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
 }
 
 ul {
@@ -61,24 +62,13 @@ li {
 }
 
 #content {
-        position: absolute;
-        background-color: black;
-        background-color: rgba(0, 0, 0, .7);
-        filter:alpha(opacity=70);
-	padding: .5em;
-        margin-left: 2em;
-        margin-top: 5em;
-	box-shadow: 0 0 .5em .5em rgba(0, 0, 0, .7);
+	padding: 1.5em .5em .5em .5em;
+        margin: 5em 0 0 2em;
 	left: 2em;
-        padding-top: 1.5em;
 	top: 0;
 	bottom: 0;
 	width: 50em;
 	text-align: right;
-}
-
-.lbwrap {
-    overflow: hidden;
 }
 
 #menu {
@@ -176,35 +166,33 @@ li {
 
 #image {
 	position: absolute;
-	bottom: 0;
-	height: 100%;
+        left: 0;
+	top: 0;
+        height: 100%;
 	width: 100%;
 	background-color: black;
 	z-index: -1;
 }
 
-#actions {
+#imageInfo {
+    padding: .5em;
     position: absolute;
     bottom: 0;
+    left: 0;
+}
+
+#minimize {
+    bottom: 0;
     right: 0;
-    font-family: "rounded", Helvetica;
-    background-color: rgba(0,0,0,.7);
-    box-shadow: 0 0 .5em .5em rgba(0, 0, 0, .7);
-}
-
-#actions li {
-    padding: .25em;
-}
-
-#actions li:hover {
-    color: #AAD;
 }
 
 #image img {
 	width: 100%;
 	height: 100%;
 
-}.hidden {
+}
+
+.hidden {
 	display: none;
 }
 
@@ -347,10 +335,6 @@ h2 {
     filter:alpha(opacity=100);
 }
 
-.scroller {
-    overflow: auto;
-}
-
 .thumbnail img {
 	border: 1px solid white;
 	position: absolute;
@@ -366,8 +350,12 @@ h2 {
 
 
 /* Color scheme */
-#menu ul li a:hover, #whatson:hover, .showTitle h2, .hover .showText a {
+.hover:hover, .hover:hover a, #menu ul li a:hover {
 	color: #AAD;
+}
+
+.show:hover {
+    border-color: #AAD;
 }
 
 #menu ul li a:hover:before {
@@ -376,10 +364,6 @@ h2 {
 
 #woDates h2, .showDates h2 {
 	color: #CCCCCC;
-}
-
-.hover {
-    border-color: #AAD;
 }
 
 #loggedin {
@@ -421,4 +405,17 @@ h2 {
 #error {
     background-color: red;
     background-color: rgba(255, 0, 0, .4);
+}
+
+.transBack {
+    position: absolute;
+    background-color: black;
+    background-color: rgba(0, 0, 0, .7);
+    box-shadow: 0 0 .5em .5em rgba(0, 0, 0, .7);
+    filter:alpha(opacity=70);
+    color: white;
+}
+
+.roundFont {
+    font-family: "rounded", Helvetica;
 }

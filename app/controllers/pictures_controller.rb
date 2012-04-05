@@ -22,7 +22,7 @@ class PicturesController < ProtectedController
     end
         
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :show, :id => @picture.id, :layout => false }
       format.xml  { render :xml => @picture }
       format.json { render :json => @picture }
     end
@@ -32,7 +32,7 @@ class PicturesController < ProtectedController
   # GET /pictures/1
   # GET /pictures/1.xml
   def show
-    
+
     @picture = Picture.find(params[:id])
 
     respond_to do |format|

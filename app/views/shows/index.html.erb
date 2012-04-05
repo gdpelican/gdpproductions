@@ -1,8 +1,8 @@
 
 <% @shows.each do |show| %>
-<div id="show<%= show.id %>" class="show rounded">
+<div id="show<%= show.id %>" class="show rounded hover">
 	<div class="showText">
-		<div class="showTitle"><h2><%= link_to(show.title, "/shows/" + show.id.to_s()) %></h2></div>
+		<div class="showTitle hover"><h2><%= link_to(show.title, "/shows/" + show.id.to_s()) %></h2></div>
 		<div class="showDates"><h2><%= show.start_date.strftime("%b %d") %> - <%= show.end_date.strftime("%b %d, %Y") %> at <%= show.venue.name %></h2></div>
 		<div class="scroller showScroller">
 			<div class="showDesc"><%= show.blurb %></div>

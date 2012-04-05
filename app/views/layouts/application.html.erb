@@ -11,27 +11,29 @@
 <% if session[:id] %>
   <div id="loggedin"></div>
 <% end %>
-
+  
 <div id="body">
+
+        <div id="pictureData"><%= render :template => 'picture_data/index' %></div>
+
         <div id="gdp"><%=  image_tag('GDP.gif') %></div>
 	<div id="menu"><%= render :template => 'links/index' %></div>
 	<div id="header"><%= @title %></div>
-        <div id="content" class="scroller">
-          <% if flash[:notice] %> <div id="notice" class="flash"><%= flash[:notice] %></div> <% end %>
-          <% if flash[:error] %><div id="error" class="flash"><%= flash[:error] %></div> <% end %>
+        <div id="content" class="scroller transBack">
+          <% if flash[:notice] %> 
+            <div id="notice" class="flash"><%= flash[:notice] %></div>
+          <% end %>
+            
+          <% if flash[:error] %>
+            <div id="error" class="flash"><%= flash[:error] %></div>
+          <% end %>
           <%= yield %>
         </div>
-        <ul id="actions">
-          <li id="minimize"></li>
-          <!--<li id="changePicture" class="hidden">Change Picture</li>-->
-        </ul>
-	<% if Show.current.end_date >= Date.today %><div id="whatson"><%= render :template => 'whatson/index' %></div><% end %>
-</div>
+	<% if Show.current.end_date >= Date.today %>
+          <div id="whatson" class="hover"><%= render :template => 'whatson/index' %></div>
+        <% end %>
 
-<div id="image" class="hidden">
-	<%= if !get_picture.nil?
-            image_tag get_picture.picture.url
-        end%>
+
 </div>
 
 </body>

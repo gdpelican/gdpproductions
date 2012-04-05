@@ -8,6 +8,7 @@ GDP::Application.routes.draw do
   match 'textile_preview' => 'textile_preview#show'
 
   resources :venues, :shows, :pictures, :links, :pages
+  resources :picture_data, :only => :index
   resources :sessions, :only => :create
   resource :contact, :only => [:show, :create]
 
