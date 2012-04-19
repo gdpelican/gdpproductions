@@ -6,6 +6,7 @@ var show = 'Take me back!';
 
 $(window).load(function() {
 
+    $('.scroller').scrollbars({overlap: true});
     $('#image').fadeIn(5000);
 
     if($.browser.msie) {
@@ -24,8 +25,6 @@ $(window).load(function() {
 });
 
 $(document).ready(function() {
-
-        $('.scroller').scrollbars({overlap: true});
 
     	$('#whatson')
 		//.height($('#woTitle').width())
