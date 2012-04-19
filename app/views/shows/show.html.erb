@@ -3,7 +3,7 @@
 <div id="latlng" class="hidden"><%= @show.venue.latitude + ';' + @show.venue.longitude %></div>
 <% end %>
 
-<% if !@show.ticket_link.nil? and @show.end_date >= Date.today %>
+<% if !@show.ticket_link and @show.end_date >= Date.today %>
   <div id="ticketLink" class="hidden"><%=  @show.ticket_link %></div>
 <% end %>
 
@@ -20,8 +20,8 @@
   <% if !@show.pictures.empty? %>
   <div class="showGallery scroller">
     <%   @show.pictures.each do |p| %>
-    <%=   link_to image_tag(p.picture.url(:thumb), :class => 'roundedNoIE'), p.picture.url, :rel  => 'prettyphoto[show]' %>
-    <%   end %>
+      <%=   link_to image_tag(p.picture.url(:thumb), :class => 'roundedNoIE'), p.picture.url, :rel  => 'prettyphoto[show]' %>
+    <% end %>
   </div>
   <% end %>
   <div class="showDescription"><%= raw RedCloth.new(@show.description).to_html %></div>

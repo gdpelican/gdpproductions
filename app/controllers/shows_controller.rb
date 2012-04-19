@@ -106,7 +106,7 @@ class ShowsController < ProtectedController
       format.xml  { head :ok }
     end
   end
-  
+
   def picture_mode
     @picture_mode = @show.id
   end

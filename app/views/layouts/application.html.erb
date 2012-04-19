@@ -19,7 +19,7 @@
         <div id="gdp"><%=  image_tag('GDP.gif') %></div>
 	<div id="menu"><%= render :template => 'links/index' %></div>
 	<div id="header"><%= @title %></div>
-        <div id="content" class="scroller transBack">
+        <div id="content" class="transBack scroller">
           <% if flash[:notice] %> 
             <div id="notice" class="flash"><%= flash[:notice] %></div>
           <% end %>

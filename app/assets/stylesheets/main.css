@@ -69,6 +69,7 @@ li {
 	bottom: 0;
 	width: 50em;
 	text-align: right;
+        overflow: auto;
 }
 
 #menu {
@@ -93,6 +94,10 @@ li {
 	font-size: 1.5em;
 	text-decoration: none;
 	padding-right: 1em;
+}
+
+#menu ul li:hover {
+    opacity: 1;
 }
 
 #menu ul li a:hover:before {
@@ -182,7 +187,8 @@ li {
 }
 
 #minimize {
-    bottom: 0;
+    padding: .25em;
+    top: 0;
     right: 0;
 }
 
@@ -267,7 +273,7 @@ h2 {
 
 .showHeaderDates {
     position: absolute;
-    top: .65em;
+    top: -.15em;
     left: 2.5em;
     font-size: 2em;
     text-align: center;
@@ -312,15 +318,23 @@ h2 {
 }
 
 .showGallery {
-    width: 100%;
+    width: 45em;
+    margin: auto;
+    overflow: auto;
     bottom: 0;
-    margin: 0 auto;
     text-align: center;
     height: 4em;
-    overflow-x: hidden;
-    white-space: nowrap;
     padding-top: .5em;
     border-radius: .5em;
+    white-space: nowrap;
+}
+
+.showGallery ul {
+}
+
+.showGallery li {
+    float: left;
+    white-space: nowrap;
 }
 
 .showGallery img {
@@ -350,7 +364,7 @@ h2 {
 
 
 /* Color scheme */
-.hover:hover, .hover:hover a, #menu ul li a:hover {
+.hover:hover, .hover:hover a, #menu ul li a:hover, #whatson:hover {
 	color: #AAD;
 }
 
@@ -363,7 +377,7 @@ h2 {
 }
 
 #woDates h2, .showDates h2 {
-	color: #CCCCCC;
+	color: #CCCCCC !important;
 }
 
 #loggedin {

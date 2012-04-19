@@ -1,0 +1,127 @@
+/*! jQuery Resize | License: https://github.com/nathggns/jQuery-Resize/blob/master/LICENSE */
+(function($) {
+	var _bind    = $.fn.bind,
+		_trigger = $.fn.trigger;
+
+	var methods = {
+		"init": function(callback, cData) {
+			var obj = this;
+			var data = methods.getData.call(obj);
+			if (typeof data !== 'undefined') {
+				var callbacks = data["callbacks"];
+				callbacks.push([cData, callback]);
+				methods.setData.call(obj, data);
+				return true;
+			} else {
+				data = {
+					"callbacks": [
+						[
+							cData,
+							callback
+						]
+					],
+					"width": obj.outerWidth(),
+					"height": obj.outerHeight()
+				};
+				methods.setData.call(obj, data);
+				return methods.startInterval.call(obj);
+			}
+		},
+		"startInterval": function() {
+			var obj = this;
+			var interval = setInterval(function() {
+				try {
+					var data = methods.getData.call(obj);
+					if (obj.outerHeight() != data["height"] || obj.outerWidth() != data["width"]) {
+
+						$.each(data["callbacks"], function(i, cb) {
+							var cData = cb[0];
+							var callback = cb[1];
+
+							callback.apply(obj.get(0), [cData]);
+						});
+
+						data["width"] = obj.outerWidth();
+						data["height"] = obj.outerHeight();
+					}
+				} catch (e) {
+					clearInterval(interval);
+					return false;
+				}
+			}, 50);
+		},
+		"setData": function(index, value) {
+			var obj = this;
+			if (typeof(index) === 'object') {
+				if (value === true) {
+					return this.data('jQRData', index);
+				}
+				return $.each(index, function(index, value) {
+					return methods.setData.call(obj, index, value);
+				});
+			}
+
+			var data = this.data('jQRData');
+			if (!data) {
+				data = {};
+				this.data('jQRData', data);
+			}
+
+			data[index] = value;
+			if (value === true) {
+				data = value;
+			}
+			return this.data('jQRData', data);
+		},
+		"getData": function(index) {
+			var data = this.data('jQRData');
+			return index ? data[index] : data;
+		},
+		"removeData": function() {
+			return this.removeData('jQRData');
+		}
+	}
+
+	$.fn._trigger = _trigger;
+	$.fn._bind    = _bind;
+
+	var args = arguments;
+
+	$.fn.bind = function() {
+		if (arguments[0] !== "resize") return $.fn._bind.apply(this, arguments);
+		var args = arguments;
+		return $.each(this, function(i, obj) {
+			(function() {
+				if (this[0] === window) return $.fn._bind.apply(this, arguments);
+				var callback = null;
+				var data = null;
+				if (arguments.length > 2 && arguments[1] === null && typeof arguments[2] === "function") {
+					callback = arguments[2];
+					data = arguments[1];
+				}
+
+				if (!callback && typeof arguments[1] === "function") {
+					callback = arguments[1];
+				}
+
+				methods.init.call(this, callback, data);
+			}).apply($(obj), args);
+		});
+	}
+
+	$.fn.trigger = function() {
+		if (arguments[0] !== "resize") return $.fn._trigger.apply(this, arguments);
+
+		$.each(this, function(i, ele) {
+			$ele = $(ele);
+			var data = methods.getData.call($ele);
+			
+			if(typeof data !== 'undefined') {
+				for (key in data["callbacks"]) {
+					parts = data["callbacks"][key];
+					parts[1].call(ele, parts[0]);
+				}
+			}
+		});
+	}
+})(jQuery);

@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
     if @contact.save
       flash[:notice] = @fields['success']
     else
-      flash[:error] = @contact.email
+      flash[:error] = @fields['error']
     end
     render :show
   end
@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
 
   def define_fields
     @fields = Hash.new
+    @fields['greeting'] = 'If you\'ve got a question, comment, proposition, or otherwise want to get in touch, we\'re excited to hear from you! Just fill out the form below and you\'ll hear from us shortly.'
     @fields['name'] = 'Your Name: '
     @fields['email'] = 'Email: '
     @fields['subject'] = 'Subject: '

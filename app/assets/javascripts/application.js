@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.lionbars.0.3
 //= require jquery.prettyPhoto
+//= require jquery.scrollbars
 //= require curvycorners
 //= require_tree .

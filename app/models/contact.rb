@@ -18,10 +18,14 @@ class Contact
   
   def save
     if self.valid?
-      ContactMailer.contact_email(self).deliver
+      deliver_message
       return true
     end
     return false
+  end
+
+  def deliver_message
+    ContactMailer.contact_email(self).deliver
   end
 
   def persisted?

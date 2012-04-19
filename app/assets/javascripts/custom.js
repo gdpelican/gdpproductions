@@ -1,6 +1,9 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+var hide = 'Check out the picture!';
+var show = 'Take me back!';
+
 $(window).load(function() {
 
     $('#image').fadeIn(5000);
@@ -15,14 +18,14 @@ $(window).load(function() {
             }, '.rounded');
         $('#woTitle').css('bottom', '-.75em').css('right', 0);
     }
-    else
-        $('.scroller').lionbars();
 
-    $('#minimize').html('Hide Content').click(toggleContent);
+    $('#minimize').html('Check out the picture!').click(toggleContent);
 
 });
 
 $(document).ready(function() {
+
+        $('.scroller').scrollbars({overlap: true});
 
     	$('#whatson')
 		//.height($('#woTitle').width())
@@ -44,15 +47,22 @@ $(document).ready(function() {
             opacity: .25
         });
 
+        $('#aboutList li').bind('click', clickBadge);
+
 });
 
 function toggleContent() {
-    $('#content, #header, #imageInfo').fadeToggle('slow', 'swing');
+    $('#content, #header, #imageInfo, #whatson').fadeToggle('slow', 'swing');
     switch($('#minimize').html()) {
-        case 'Hide Content':
-            $('#minimize').html('Show Content'); break;
-        case 'Show Content': 
-            $('#minimize').html('Hide Content'); break;
+        case hide:
+            $('#menu ul li a').animate({'opacity': .3}).hover(
+                function() { $(this).animate({'opacity': 1}) },
+                function() { $(this).animate({'opacity': .3}) }
+            );
+            $('#minimize').html(show); break;
+        case show:
+            $('#menu ul li a').animate({'opacity': 1}).off('mouseenter').off('mouseleave');
+            $('#minimize').html(hide); break;
     }
 }
 
@@ -60,9 +70,9 @@ function changePicture() {
     $('#image').fadeOut('5000', function() {
      $.get('/picture_data/', {mode: $('#pictureMode').html(), id: $('#image').attr('title')}, function(data) {
         $('#pictureData').html(data);
-        $('#image').fadeIn('5000');
+        $('#image img').bind('load', function() { $('#image').fadeIn('5000'); });
         $('#imageInfo').css('display', 'block');
-        $('#minimize').html('Show Content').click(toggleContent);
+        $('#minimize').html(show).click(toggleContent);
         $('#changePicture').click(changePicture);
      })});
 }
@@ -123,4 +133,28 @@ function makeMarker(location, map) {
 
 function refresh() {
 	$('#content').height($('#content').height());
+}
+
+function clickBadge() {
+
+    var faded = 0;
+
+    $(this).addClass('selected').off('click');
+    $('#aboutList li.:not(.selected)').fadeOut('1000',
+        function() {
+            faded++;
+            if(faded == $('#aboutList li.:not(.selected)').length)
+                $('.selected').animate({'width': '45em' },
+                    function() { $('.selected .slider').fadeIn('500'); });
+        });
+    $(this).on('click', unclickBadge);
+}
+
+function unclickBadge() {
+    $(this).off('click');
+    $('.selected .slider').fadeOut('500',
+        function() { $('.selected').animate({width: '9em'},
+            function() { $('#aboutList li').fadeIn('1000').removeClass('selected'); });
+        });
+    $(this).on('click', clickBadge);
 }

@@ -11,5 +11,13 @@ module ApplicationHelper
   def contact_path
     '/contact'
   end
+
+  def fb_link
+    'http://www.facebook.com/GDPProductions'
+  end
+
+  def twitter_link
+    'http://twitter.com/#!/@GDP_Productions'
+  end
   
 end

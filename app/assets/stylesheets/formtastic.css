@@ -28,13 +28,15 @@
       box-shadow: 1px 1px #CCC;
       border: none;
       color: white;
-      background-color: black;
+      background-color: #666;
+      background-color: rgba(0,0,0,1);
       opacity: .5;
       vertical-align: top;
   }
 
 .formtastic .text textarea {
-    height: 25em;
+    height: 15em;
+    resize: none;
 }
 
 .formtastic .string label, .formtastic .text label {
