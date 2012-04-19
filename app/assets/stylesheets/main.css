@@ -364,8 +364,8 @@ h2 {
 
 
 /* Color scheme */
-.hover:hover, .hover:hover a, #menu ul li a:hover, #whatson:hover {
-	color: #AAD;
+.hover:hover, .hover:hover a, #menu ul li a:hover, #whatson:hover, .show:hover a {
+	color: #AAD !important;
 }
 
 .show:hover {

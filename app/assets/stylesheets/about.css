@@ -94,5 +94,5 @@
     color: #AAD;
 }
 
-#howToHelp a { color: white; }
-#howToHelp a:hover { color: #AAD; }
+#howToHelp a, #content a { color: white; }
+#howToHelp a:hover, #content a:hover { color: #AAD; }
