@@ -6,7 +6,8 @@ var show = 'Take me back!';
 
 $(window).load(function() {
 
-    $('.scroller').scrollbars({overlap: true});
+    $('.scroller').jScrollPane();
+    //$('.scroller').scrollbars({overlap: true});
     $('#image').fadeIn(5000);
 
     if($.browser.msie) {
