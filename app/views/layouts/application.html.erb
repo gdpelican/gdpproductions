@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GDP <%= if @title then ' - ' + @title end %></title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<% if session[:id] %>
+  <div id="loggedin"></div>
+<% end %>
+  
+<div id="body">
+
+        <div id="pictureData"><%= render :template => 'picture_data/index' %></div>
+
+        <div id="gdp"><%=  image_tag('GDP.gif') %></div>
+	<div id="menu"><%= render :template => 'links/index' %></div>
+	<div id="header"><%= @title %></div>
+        <div id="content" class="transBack scroller">
+          <% if flash[:notice] %> 
+            <div id="notice" class="flash"><%= flash[:notice] %></div>
+          <% end %>
+            
+          <% if flash[:error] %>
+            <div id="error" class="flash"><%= flash[:error] %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+	<% if Show.current.end_date >= Date.today %>
+          <div id="whatson" class="hover"><%= render :template => 'whatson/index' %></div>
+        <% end %>
+
+
+</div>
+
+</body>
+</html>

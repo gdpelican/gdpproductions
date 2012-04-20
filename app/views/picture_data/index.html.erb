@@ -1,0 +1,15 @@
+<% if get_picture %>
+  <div id="image" class="hidden" title="<%=@picture.id%>"><%= image_tag @picture.picture.url %></div>
+  <div id="minimize" class="transBack roundFont hover"></div>
+
+  <ul id="imageInfo" class="hidden transBack roundFont">
+    <li><%=@picture.caption %></li>
+    <li><%=@picture.show.title %></li>
+    <% if @picture.show.photographer %>
+      <li><%= 'Photo Credit: ' + @picture.show.photographer %></li>
+    <% end %>
+    <li class="hover" id="changePicture">Change Picture</li>
+  </ul>
+
+  <div id="pictureMode" class="hidden"><%= @picture_mode %></div>
+<% end %>
