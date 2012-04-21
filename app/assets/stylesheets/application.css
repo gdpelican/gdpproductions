@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require prettyPhoto
- *= require jquery.scrollbars
  *= require jquery.jscrollpane
  *= require_tree .
 */
