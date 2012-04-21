@@ -11,7 +11,6 @@ end
 #jQuery with rails
 gem 'jquery-rails', '>= 1.0.12'
 
-
 #Heroku
 gem 'heroku'
 
