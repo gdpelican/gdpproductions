@@ -273,7 +273,7 @@ h2 {
 
 .showHeaderDates {
     position: absolute;
-    top: -.15em;
+    top: .6em;
     left: 2.5em;
     font-size: 2em;
     text-align: center;
@@ -364,8 +364,8 @@ h2 {
 
 
 /* Color scheme */
-.hover:hover, .hover:hover a, #menu ul li a:hover, #whatson:hover {
-	color: #AAD;
+.hover:hover, .hover:hover a, #menu ul li a:hover, #whatson:hover, .show:hover a {
+	color: #AAD !important;
 }
 
 .show:hover {

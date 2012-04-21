@@ -6,6 +6,8 @@ var show = 'Take me back!';
 
 $(window).load(function() {
 
+    $('.scroller').jScrollPane();
+    //$('.scroller').scrollbars({overlap: true});
     $('#image').fadeIn(5000);
 
     if($.browser.msie) {
@@ -24,8 +26,6 @@ $(window).load(function() {
 });
 
 $(document).ready(function() {
-
-        $('.scroller').scrollbars({overlap: true});
 
     	$('#whatson')
 		//.height($('#woTitle').width())
@@ -136,25 +136,28 @@ function refresh() {
 }
 
 function clickBadge() {
-
+    $(this).off('click').addClass('selected');
     var faded = 0;
 
-    $(this).addClass('selected').off('click');
     $('#aboutList li.:not(.selected)').fadeOut('1000',
         function() {
             faded++;
             if(faded == $('#aboutList li.:not(.selected)').length)
                 $('.selected').animate({'width': '45em' },
-                    function() { $('.selected .slider').fadeIn('500'); });
+                    function() { 
+                        $('.selected .slider').fadeIn('500'); 
+                        $(this).on('click', unclickBadge);
+                    });
         });
-    $(this).on('click', unclickBadge);
 }
 
 function unclickBadge() {
     $(this).off('click');
     $('.selected .slider').fadeOut('500',
         function() { $('.selected').animate({width: '9em'},
-            function() { $('#aboutList li').fadeIn('1000').removeClass('selected'); });
+            function() { 
+                $('#aboutList li').fadeIn('1000').removeClass('selected');
+                $(this).on('click', clickBadge);
+            });
         });
-    $(this).on('click', clickBadge);
 }
