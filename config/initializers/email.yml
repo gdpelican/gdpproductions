@@ -1,30 +1,14 @@
-<<<<<<< HEAD
 development:
   :address: smtpout.secureserver.net
   :port: 25
   :authentication: plain
   :user_name: contact
-  :password: 
+  :password:
   :enable_starttls_auto: true
 production:
   :address: smtpout.secureserver.net
   :port: 25
   :authentication: plain
   :user_name: contact
-  :password: 
-=======
-development:
-  :address: smtpout.secureserver.net
-  :port: 25
-  :authentication: plain
-  :user_name: contact
-  :password: 
-  :enable_starttls_auto: true
-production:
-  :address: smtpout.secureserver.net
-  :port: 25
-  :authentication: plain
-  :user_name: contact
-  :password: 
->>>>>>> a1a21b67793ea5c220162c3159b73dd9ccf2f233
+  :password:
   :enable_starttls_auto: true

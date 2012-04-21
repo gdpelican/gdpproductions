@@ -136,8 +136,10 @@ function refresh() {
 }
 
 function clickBadge() {
-    $(this).off('click').addClass('selected');
+
     var faded = 0;
+
+    $(this).addClass('selected').off('click');
     $('#aboutList li.:not(.selected)').fadeOut('1000',
         function() {
             faded++;
@@ -147,6 +149,7 @@ function clickBadge() {
                         $('.selected .slider').fadeIn('500'); 
                         $(this).on('click', unclickBadge);
                     });
+
         });
 }
 
@@ -155,7 +158,7 @@ function unclickBadge() {
     $('.selected .slider').fadeOut('500',
         function() { $('.selected').animate({width: '9em'},
             function() { 
-                $('#aboutList li').fadeIn('1000').removeClass('selected');
+                $('#aboutList li').fadeIn('1000').removeClass('selected'); 
                 $(this).on('click', clickBadge);
             });
         });
