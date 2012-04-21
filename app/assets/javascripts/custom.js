@@ -138,7 +138,6 @@ function refresh() {
 function clickBadge() {
     $(this).off('click').addClass('selected');
     var faded = 0;
-
     $('#aboutList li.:not(.selected)').fadeOut('1000',
         function() {
             faded++;

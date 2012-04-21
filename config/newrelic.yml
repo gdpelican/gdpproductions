@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #---
 #<%= ENV["RACK_ENV"] %>:
 #  error_collector:
@@ -16,4 +17,24 @@
 #    stack_trace_threshold: 0.5
 #    transaction_threshold: apdex_f
 #  capture_params: false
+=======
+#---
+#<%= ENV["RACK_ENV"] %>:
+#  error_collector:
+#    capture_source: true
+#    enabled: true
+#    ignore_errors: ActionController::RoutingError
+#  apdex_t: 0.5
+#  ssl: false
+#  monitor_mode: true
+#  license_key: <%= ENV["NEW_RELIC_LICENSE_KEY"] %>
+#  developer_mode: false
+#  app_name: <%= ENV["NEW_RELIC_APP_NAME"] %>
+#  transaction_tracer:
+#    record_sql: obfuscated
+#    enabled: true
+#    stack_trace_threshold: 0.5
+#    transaction_threshold: apdex_f
+#  capture_params: false
+>>>>>>> a1a21b67793ea5c220162c3159b73dd9ccf2f233
 #  log_level: info

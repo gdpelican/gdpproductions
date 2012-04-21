@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% if !@current.nil? %>
 
 	<div id="woContainer" showid="<%= @current.id %>">
@@ -21,3 +22,28 @@
 	</div>
 
 <% end %>
+=======
+<% if !@current.nil? %>
+
+	<div id="woContainer" showid="<%= @current.id %>">
+	
+	<span id="woTitle">
+		WHAT'S ON?
+	</span>
+	
+	<span id="woShowtitle">
+	  <h2><%= @current.title %></h2>
+	</span>
+	
+	<span id="woDates">
+	  <h2><%= @current.start_date.strftime("%b %d") %> - <%= @current.end_date.strftime("%b %d, %Y") %></h2>
+	</span>
+	
+	<span id="woThumb" class="rounded">
+		<%= image_tag @current.thumb.url %>
+	</span>
+	
+	</div>
+
+<% end %>
+>>>>>>> a1a21b67793ea5c220162c3159b73dd9ccf2f233
