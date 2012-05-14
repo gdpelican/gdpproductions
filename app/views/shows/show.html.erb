@@ -3,10 +3,10 @@
 <div id="latlng" class="hidden"><%= @show.venue.latitude + ';' + @show.venue.longitude %></div>
 <% end %>
 
-<% if !@show.ticket_link and @show.end_date >= Date.today %>
+<% if @show.ticket_link and @show.end_date >= Date.today %>
   <div id="ticketLink" class="hidden"><%=  @show.ticket_link %></div>
 <% end %>
-
+    
 <div class="showPage">
   <div class="showHeaderDates"><%= @show.start_date.strftime("%b %e").tr('0', 'O') %> - <%= @show.end_date.strftime("%b %e %Y").tr('0', 'O') %></div>
   <div class="showHeader rounded">
