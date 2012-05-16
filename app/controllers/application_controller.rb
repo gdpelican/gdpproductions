@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     end
 
     @links = Link.all
+    @socials = Social.all
     @current = Show.current
     @picture_mode = 'any'
     

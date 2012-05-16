@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404214229) do
+ActiveRecord::Schema.define(:version => 20120517153018) do
 
   create_table "links", :force => true do |t|
     t.string    "text"
@@ -65,6 +65,28 @@ ActiveRecord::Schema.define(:version => 20120404214229) do
     t.timestamp "updated_at",         :null => false
     t.string    "ticket_link"
     t.string    "photographer"
+  end
+
+  create_table "social", :force => true do |t|
+    t.string   "name"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "socials", :force => true do |t|
+    t.string   "name"
+    t.string   "link"
+    t.string   "alt"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "venues", :force => true do |t|

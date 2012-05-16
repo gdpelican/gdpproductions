@@ -26,6 +26,15 @@ li {
     list-style: none;
 }
 
+a {
+      border:none;
+      outline:none;
+}
+
+a img {
+    border: none;
+}
+
 #gdp {
     position: absolute;
     top: 1em;
@@ -88,7 +97,7 @@ li {
 	text-align: right;
 }
 
-#menu ul li a {
+#menu>ul>li>a {
 	position: relative;
 	color: white;
 	font-size: 1.5em;
@@ -96,11 +105,11 @@ li {
 	padding-right: 1em;
 }
 
-#menu ul li:hover {
+#menu>ul>li:hover {
     opacity: 1;
 }
 
-#menu ul li a:hover:before {
+#menu>ul>li>a:hover:before, .social:hover:before {
 	width: 1em;
 	height: 100%;
 	content: " ";
@@ -432,4 +441,28 @@ h2 {
 
 .roundFont {
     font-family: "rounded", Helvetica;
+}
+
+.social span {
+    position: relative;
+    top: .1em;
+    right: 1.5em;
+}
+
+.social span:hover:before {
+    position: absolute;
+    right: 0;
+    content: " ";
+    width: 1.5em;
+    height: 1.5em;
+    opacity: .15;
+    border-radius: .25em;
+    background-color: white;
+}
+
+.social img {
+    margin: 0;
+    padding-left: .5em;
+    width: 1.5em;
+    height: 1.5em;
 }
