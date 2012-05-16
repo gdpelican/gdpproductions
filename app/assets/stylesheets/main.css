@@ -449,20 +449,14 @@ h2 {
     right: 1.5em;
 }
 
-.social span:hover:before {
-    position: absolute;
-    right: 0;
-    content: " ";
-    width: 1.5em;
-    height: 1.5em;
-    opacity: .15;
-    border-radius: .25em;
-    background-color: white;
-}
-
 .social img {
     margin: 0;
     padding-left: .5em;
     width: 1.5em;
     height: 1.5em;
+    opacity: .75;
+}
+
+.social img:hover {
+    opacity: 1;
 }
