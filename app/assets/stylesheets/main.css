@@ -10,10 +10,16 @@ body, html {
 	margin: 0;
 	padding: 0;
 	color: white;
-	background-color: black;
 	overflow: hidden;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1em;
+        z-index: -2;
+}
+
+body { background-color: transparent !important; }
+
+html {
+    background-color: black !important;
 }
 
 ul {
