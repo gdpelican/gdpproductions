@@ -267,7 +267,20 @@ h2 {
 .showTitle h2 {
 	font-size: 2em;
 	padding-top: .1em;
+        display: inline;
 	font-family: "rounded", Helvetica;
+}
+
+.showTitle>a {
+    padding-left: 1em;
+    position: relative;
+    bottom: .25em;
+    font-family: 'rounded', Helvetica;
+}
+
+.showTitle>a:hover {
+    right: .25em;
+    font-weight: bold;
 }
 
 .showDates h2 {
@@ -330,6 +343,10 @@ h2 {
 
 .showInfo {
     padding: .5em;
+}
+
+.showTicket {
+    display: inline-block;
 }
 
 .showGallery {
