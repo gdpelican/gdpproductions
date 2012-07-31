@@ -19,7 +19,7 @@ class Show < ActiveRecord::Base
      :bucket => 'GDProdThumbs-TEST'
 
   def self.current
-    upcoming = where("shows.end_date > ?", Time.new)
+    upcoming = where("shows.end_date > ?", Time.new).order('shows.end_date ASC')
     if (upcoming.any?)
       upcoming.first
     else
