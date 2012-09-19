@@ -7,7 +7,6 @@ var show = 'Take me back!';
 $(window).load(function() {
 
     $('.scroller').jScrollPane();
-    //$('.scroller').scrollbars({overlap: true});
     $('#image').fadeIn(5000);
 
     if($.browser.msie) {
@@ -27,6 +26,7 @@ $(window).load(function() {
 
 $(document).ready(function() {
 
+        $.fx.interval = 10;
     	$('#whatson')
 		//.height($('#woTitle').width())
 		.css('padding-left', $('#woTitle').height())
@@ -52,7 +52,7 @@ $(document).ready(function() {
 });
 
 function toggleContent() {
-    $('#content, #header, #imageInfo, #whatson').fadeToggle('slow', 'swing');
+    $('#content, #header, #imageInfo, #whatson').fadeToggle('slow');
     switch($('#minimize').html()) {
         case hide:
             $('#menu ul li a').animate({'opacity': .3}).hover(

@@ -8,7 +8,9 @@
     <% if @picture.show.photographer %>
       <li><%= 'Photo Credit: ' + @picture.show.photographer %></li>
     <% end %>
-    <li class="hover" id="changePicture">Change Picture</li>
+    <% if has_other_picture %>
+      <li class="hover" id="changePicture">Change Picture</li>
+    <% end %>
   </ul>
 
   <div id="pictureMode" class="hidden"><%= @picture_mode %></div>

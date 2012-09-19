@@ -18,11 +18,19 @@ class Picture < ActiveRecord::Base
      :path => "/:style/:id/:filename",
      :bucket => 'GDProd-TEST'
 
-  def self.random(show)
+  def self.random(show, current)
     if (show == nil)
-      self.where(:cover_photo_ind => true).first(:order => "RANDOM()")
+      self.first(:order => "RANDOM()")
     else
-      show.pictures.where(:cover_photo_ind => true).first(:order => "RANDOM()")
+      show.pictures.first(:order => "RANDOM()")
+    end
+  end
+  
+  def self.has_other_picture(show)
+    if(show == nil)
+      self.where(:cover_photo_ind => true).count > 1
+    else
+      show.pictures.where(:cover_photo_ind => true).count > 1
     end
   end
   
