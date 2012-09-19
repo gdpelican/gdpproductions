@@ -20,9 +20,9 @@ class Picture < ActiveRecord::Base
 
   def self.random(show, current)
     if (show == nil)
-      self.first(:order => "RANDOM()")
+      self.where(:cover_photo_ind => true).first(:order => "RANDOM()")
     else
-      show.pictures.first(:order => "RANDOM()")
+      show.pictures.where(:cover_photo_ind => true).first(:order => "RANDOM()")
     end
   end
   
