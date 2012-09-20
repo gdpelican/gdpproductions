@@ -5,6 +5,7 @@
   <ul id="imageInfo" class="hidden transBack roundFont">
     <li><%=@picture.caption %></li>
     <li><%=@picture.show.title %></li>
+    <li><%=@picture.show.start_date.strftime("%b %Y").tr('0', 'O') %>
     <% if @picture.show.photographer %>
       <li><%= 'Photo Credit: ' + @picture.show.photographer %></li>
     <% end %>

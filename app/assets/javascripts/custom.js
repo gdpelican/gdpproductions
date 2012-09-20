@@ -26,7 +26,6 @@ $(window).load(function() {
 
 $(document).ready(function() {
 
-        $.fx.interval = 10;
     	$('#whatson')
 		//.height($('#woTitle').width())
 		.css('padding-left', $('#woTitle').height())

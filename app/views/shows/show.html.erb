@@ -14,7 +14,7 @@
       <%= @show.venue.name %><br/>
       <%= @show.venue.address.tr('0', 'O') %><br/>
     </div>
-    <div class="showThumb rounded"><%= image_tag @show.thumb.url %></div>
+    <div class="showThumb rounded"><%= image_tag @show.thumb.url(:thumb) %></div>
     <div id="map" class="showMap"></div>
   </div>
   <% if !@show.pictures.empty? %>
