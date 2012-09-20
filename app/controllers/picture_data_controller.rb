@@ -2,13 +2,8 @@ class PictureDataController < ApplicationController
 
   def index
 
-   if (params[:mode].nil?)
-     @picture_mode = 'any'
-   else
-     @picture_mode = params[:mode]
-   end
-
-   @past_id = params[:id]
+   @picture_mode = params[:mode] || 'any'
+   @past_id = params[:id] || -1
 
     respond_to do |format|
       format.html { render :layout => false }

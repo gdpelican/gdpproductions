@@ -1,19 +1,14 @@
 module PictureDataHelper
 
   def get_picture
-      if !@picture.nil?
-        current = @picture.id
-      else
-        current = -1
-      end
       
       case @picture_mode
         when 'any'
-          @picture = Picture.random(nil, current)
+          @picture = Picture.random(nil, @past_id)
         when 'current'
-          @picture = Picture.random(Show.current, current)
+          @picture = Picture.random(Show.current, @past_id)
         else
-          @picture = Picture.random(Show.find(@picture_mode), current)
+          @picture = Picture.random(Show.find(@picture_mode), @past_id)
       end
   end
   
