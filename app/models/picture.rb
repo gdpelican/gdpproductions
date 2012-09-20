@@ -21,11 +21,11 @@ class Picture < ActiveRecord::Base
   def self.random(show, current)
     if (show == nil)
       self.where(:cover_photo_ind => true)
-          .where('id IS NOT ?', current)
+          .where('id NOT IN (?)', current || -1)
           .first(:order => "RANDOM()")
     else
       show.pictures.where(:cover_photo_ind => true)
-                   .where('id IS NOT ?', current)
+                   .where('id NOT IN (?)', current || -1)
                    .first(:order => "RANDOM()")
     end
   end
