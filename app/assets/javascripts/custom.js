@@ -139,10 +139,11 @@ function clickBadge() {
     var faded = 0;
 
     $(this).addClass('selected').off('click');
-    $('#aboutList li.:not(.selected)').fadeOut('1000',
+    var notSelected = $('#aboutList li').not('.selected')
+    notSelected.fadeOut('1000',
         function() {
             faded++;
-            if(faded == $('#aboutList li.:not(.selected)').length)
+            if(faded == notSelected.length)
                 $('.selected').animate({'width': '45em' },
                     function() { 
                         $('.selected .slider').fadeIn('500'); 
