@@ -26,6 +26,7 @@ $(window).load(function() {
 
 $(document).ready(function() {
 
+        setTimeout(function() { $('#notice, #error').fadeOut('slow'); }, 2000);
     	$('#whatson')
 		//.height($('#woTitle').width())
 		.css('padding-left', $('#woTitle').height())

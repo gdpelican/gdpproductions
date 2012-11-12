@@ -434,13 +434,14 @@ h2 {
 }
 
 .flash {
-    width: 75%;
-    margin: auto;
     padding: .5em;
     text-align: center;
-    border-radius: .5em;
     filter:alpha(opacity=40);
     color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
 }
 
 #notice {
