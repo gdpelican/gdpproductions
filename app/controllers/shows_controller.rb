@@ -19,7 +19,7 @@ class ShowsController < ProtectedController
   # GET /shows.xml
   def index
     @shows = Show.history
-    @title = 'Past Productions'
+    @title = 'Our Productions'
 
     respond_to do |format|
       format.html # index.html.erb
