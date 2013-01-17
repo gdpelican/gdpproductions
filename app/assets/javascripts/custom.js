@@ -53,16 +53,17 @@ $(document).ready(function() {
 
 function toggleContent() {
     $('#content, #header, #imageInfo, #whatson').fadeToggle('slow');
-    switch($('#minimize').html()) {
+    var minimize = $('#minimize');
+    switch(minimize.html()) {
         case hide:
             $('#menu ul li a').animate({'opacity': .3}).hover(
                 function() { $(this).animate({'opacity': 1}) },
                 function() { $(this).animate({'opacity': .3}) }
             );
-            $('#minimize').html(show); break;
+            minimize.html(show); break;
         case show:
             $('#menu ul li a').animate({'opacity': 1}).off('mouseenter').off('mouseleave');
-            $('#minimize').html(hide); break;
+            minimize.html(hide); break;
     }
 }
 
@@ -79,8 +80,9 @@ function changePicture() {
 
 function renderMap() {
 
-    if ($('#latlng').length) {
-        var latlng = $('#latlng').html().split(';');
+    var llelement = $('#latlng');
+    if (llelement.length) {
+        var latlng = llelement.html().split(';');
         var location = new google.maps.LatLng(latlng[0], latlng[1]);
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 17,
@@ -91,7 +93,6 @@ function renderMap() {
         map.setCenter(new google.maps.LatLng(location.lat() + .0002, location.lng() - .0015));
 
         makeMarker(location, map);
-
     }
     
 }
@@ -103,9 +104,10 @@ function makeMarker(location, map) {
 
     var imageLink;
     var clickEvent;
-    if ($('#ticketLink').length) {
+    var ticketLink = $('#ticketLink');
+    if (ticketLink.length) {
         imageLink = '/assets/mapMarker.png';
-        clickEvent = function() { window.location = $('#ticketLink').html(); }
+        clickEvent = function() { window.location = ticketLink.html(); }
     }
     else
         imageLink = '/assets/mapMarker2.png';
@@ -132,7 +134,8 @@ function makeMarker(location, map) {
 }
 
 function refresh() {
-	$('#content').height($('#content').height());
+    var content = $('#content');
+    content.height(content.height());
 }
 
 function clickBadge() {

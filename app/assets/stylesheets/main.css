@@ -327,6 +327,7 @@ h2 {
 .showMap {
     height: 14em;
     width: 100%;
+    color: black;
 }
 
 .showMapInfo {
