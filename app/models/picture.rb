@@ -11,6 +11,7 @@ class Picture < ActiveRecord::Base
   has_attached_file :picture,
      :styles => {
        :original => "1024x800",
+       :mobile => "500x400",
        :thumb  => "250x250",
        :tiny => "100x100"},
      :storage => :s3,

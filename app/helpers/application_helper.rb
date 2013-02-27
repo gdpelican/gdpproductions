@@ -20,4 +20,9 @@ module ApplicationHelper
     'http://twitter.com/#!/@GDP_Productions'
   end
   
+  def mobile?
+    session[:mobile]
+  end
+  
 end
+  

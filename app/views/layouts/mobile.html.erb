@@ -1,0 +1,11 @@
+
+<div id="mobileHeader">
+  <%= link_to(image_tag('GDP_mini.gif', :id => 'logo'), '/') %>
+  <% if get_picture %>
+    <div id="mobileHeaderImage" title="<%=@picture.id%>">
+      <div id="mobileHeaderImageShadow"></div>
+      <%= image_tag @picture.picture.url(:thumb) %>
+    </div>
+  <% end %>
+</div>
+<div id="mobileContent"><%= yield %></div>

@@ -3,7 +3,9 @@
 <head>
   <title>GDP <%= if @title then ' - ' + @title end %></title>
   <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag @platform %>
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag @platform %>
   <%= csrf_meta_tag %>
   <%= favicon_link_tag %>
 </head>
@@ -12,33 +14,14 @@
 <% if session[:id] %>
   <div id="loggedin"></div>
 <% end %>
-  
+ 
 <div id="body">
 
-        <div id="pictureData"><%= render :template => 'picture_data/index' %></div>
-
-        <div id="gdp"><%=  link_to(image_tag('GDP.gif'), '/') %></div>
-	<div id="menu">
-          <ul>
-            <%= render :template => 'links/index' %>
-            <%= render :template => 'socials/index' %>
-          </ul>
-        </div>
-	<div id="header"><%= @title %></div>
-        <div id="content" class="transBack scroller">
-          <% if flash[:notice] %> 
-            <div id="notice" class="flash"><%= flash[:notice] %></div>
-          <% end %>
-            
-          <% if flash[:error] %>
-            <div id="error" class="flash"><%= flash[:error] %></div>
-          <% end %>
-          <%= yield %>
-        </div>
-	<% if Show.current.end_date >= Date.today %>
-          <div id="whatson" class="hover"><%= render :template => 'whatson/index' %></div>
-        <% end %>
-
+  <% if mobile? %>
+    <%= render :template => 'layouts/mobile' %>
+  <% else %>
+    <%= render :template => 'layouts/desktop' %>
+  <% end %>
 
 </div>
 

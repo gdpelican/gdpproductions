@@ -3,18 +3,20 @@ class ApplicationController < ActionController::Base
   
   before_filter :init
 
+  private
+  
   def init
-
-    if session[:id]
-      @user = Session.find_by_id(session[:id]).person
-    else
-      @user = nil
-    end
-
+        
+    session[:mobile] = params[:mobile] || 
+                       session[:mobile] ||
+                       request.user_agent =~ /WebOS|mobile/
+    
+    @user =  session[:id] ? Session.find_by_id(session[:id]).person : nil
     @links = Link.all
     @socials = Social.all
     @current = Show.current
-    @picture_mode = 'any'
+    @picture_mode = 'any'            
+    @platform = session[:mobile] ? 'mobile' : 'desktop'
     
   end
   

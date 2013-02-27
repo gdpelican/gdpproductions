@@ -1,6 +1,12 @@
 <% @title = 'About Us'  %>
 <%= stylesheet_link_tag 'about' %>
 
+<% if mobile? %>
+  <div id="about">
+    <h2 class="roundFont">About Us</h2>
+  </div>
+<% end %>
+
 <div id="intro">
   Welcome to GDP Productions, Philadelphia's finest renegade theater experience.<br/>
   We're a group of individuals committed to providing theater for the masses through four simple principles:

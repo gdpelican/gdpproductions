@@ -10,7 +10,6 @@ body, html {
 	margin: 0;
 	padding: 0;
 	color: white;
-	overflow: hidden;
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1em;
         z-index: -2;
@@ -41,16 +40,8 @@ a img {
     border: none;
 }
 
-#gdp {
-    position: absolute;
-    top: 1em;
-    left: .5em;
-    z-index: 1000;
-}
-
 #gdp img {
     width: 10em;
-    height: 7em;
 }
 
 #header {
@@ -88,7 +79,6 @@ a img {
 }
 
 #menu {
-	position: absolute;
 	right: 0;
 	top: 5em;
 	font-family: "rounded", Helvetica;
@@ -218,7 +208,7 @@ a img {
 }
 
 .show {
-	height: 10em;
+	min-height: 10em;
 	position: relative;
 	border: .15em solid white;
 	margin: 1.5em;
@@ -236,36 +226,12 @@ a img {
 .showText {
 }
 
-.showText .showTitle, .showText .showDesc, .showText .showDates {
-	margin-left: 10em;
-	text-align: left;
-}
-
-.showPic {
-	height: 9em;
-	width: 9em;
-	margin: .5em;
-	position: absolute;
-	left: 0;
-	top: 0;
-	
-}
-
-.showPic img {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
 h2 {
 	padding: 0;
 	margin: 0;
 }
 
 .showTitle h2 {
-	font-size: 2em;
 	padding-top: .1em;
         display: inline;
 	font-family: "rounded", Helvetica;
@@ -300,10 +266,6 @@ h2 {
 }
 
 .showHeaderDates {
-    position: absolute;
-    top: .6em;
-    left: 2.5em;
-    font-size: 2em;
     text-align: center;
     font-family: 'Rounded', Helvetica;
 }
@@ -472,16 +434,4 @@ h2 {
     position: relative;
     top: .1em;
     right: 1.5em;
-}
-
-.social img {
-    margin: 0;
-    padding-left: .5em;
-    width: 1.5em;
-    height: 1.5em;
-    opacity: .75;
-}
-
-.social img:hover {
-    opacity: 1;
 }

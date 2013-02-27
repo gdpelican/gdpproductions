@@ -12,8 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.prettyPhoto
-//= require jquery.scrollbars
-//= require jquery.jscrollpane.min
-//= require curvycorners
 //= require_tree .
+//= stub desktop
+//= stub mobile
