@@ -30,8 +30,13 @@
     height: 100%;
 }
 
+#mobileContent {
+    padding: 1em;
+}
+
 #menu>ul>li {
     padding: 1em 0;
+    margin: -1em -1em 1.5em -1em;
     box-shadow: inset 0 0 15px black;
     text-shadow: 3px 2px 3px black;
     background-image: url('/images/patterns/weave.gif');
