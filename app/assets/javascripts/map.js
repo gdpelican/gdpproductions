@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    if($('#map').length)
+    if($('#showMap').length)
         $.getScript('http://maps.google.com/maps/api/js?sensor=false&callback=renderMap');
 });
 
@@ -10,7 +10,7 @@ function renderMap() {
     if (llelement.length) {
         var latlng = llelement.html().split(';');
         var location = new google.maps.LatLng(latlng[0], latlng[1]);
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('showMap'), {
             zoom: 17,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true,

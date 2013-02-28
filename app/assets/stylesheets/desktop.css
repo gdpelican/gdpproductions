@@ -2,6 +2,24 @@ body, html {
     overflow: hidden;
 }
 
+/* Color scheme */
+.hover:hover, .hover:hover a, #menu ul li a:hover, #whatson:hover, .show:hover a {
+    color: #AAD !important;
+}
+
+#menu ul li a:hover:before {
+    background-color: #AAD;
+}
+
+.show:hover {
+    border-color: #AAD;
+}
+
+#aboutList .aboutItem:hover { 
+    background-color: rgba(255,255,255,.3); 
+}
+
+
 #menu, #gdp {
     position: absolute;
 }
@@ -27,6 +45,19 @@ body, html {
         overflow: auto;
 }
 
+#menu>ul>li:hover {
+    opacity: 1;
+}
+
+#menu>ul>li>a:hover:before, .social:hover:before {
+	width: 1em;
+	height: 100%;
+	content: " ";
+	position: absolute;
+	top: 0;
+	right: -1em;
+}
+
 #aboutList .aboutItem {
     width: 9em;
 }
@@ -40,6 +71,10 @@ body, html {
     position: absolute;
     top: .33em;
     left: 1em;
+}
+
+.showPage {
+    margin: 1.5em;
 }
 
 .showPic {
@@ -69,11 +104,21 @@ body, html {
     font-size: 2em;
 }
 
+.showTitle>a:hover {
+    right: .25em;
+    font-weight: bold;
+}
+
 .showHeaderDates {
     position: absolute;
     top: .6em;
     left: 2.5em;
     font-size: 2em;
+}
+
+.showGallery img:hover {
+    opacity: 1;
+    filter:alpha(opacity=100);
 }
 
 .showScroller {

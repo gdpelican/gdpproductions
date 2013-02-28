@@ -1,0 +1,38 @@
+<div class="showPage">
+  <div class="showText">
+    <div class="showTitle"><h2><%= link_to(@show.title, "/shows/" + @show.id.to_s()) %></h2></div>
+    <div class="showDesc"><%= @show.blurb %></div>
+    <div class="showDates"><h2><%= @show.start_date.strftime("%b %d") %> - <%= @show.end_date.strftime("%b %d, %Y") %> at <%= @show.venue.name %></h2></div>
+  </div>
+  <div class="showHeader rounded">
+    <div class="showGrid roundFont">
+      <%= render :partial => 'square', :locals => {
+                 :name => 'Tickets',
+                 :href => @show.ticket_link,
+                 :icon => 'barcode',
+                 :condition => @show.ticket_link && @show.end_date >= Date.today
+      } %>
+      <%= render :partial => 'square', :locals => {
+                 :name => 'Map',
+                 :href => '',
+                 :icon => 'flag',
+                 :condition => true
+      } %>
+      <%= render :partial => 'square', :locals => {
+                 :name => 'Pics',
+                 :href => '',
+                 :icon => 'camera',
+                 :condition => @show.pictures.count > 0
+      } %>
+      
+      <%= render :partial => 'square', :locals => {
+                 :name => 'Info',
+                 :href => '',
+                 :icon => 'info-sign',
+                 :condition => !@show.description.empty?
+      } %>
+    </div>
+    <div class="backButton roundFont hidden">Back</div>
+    <%= image_tag @show.thumb.url(:thumb), :class => 'showGridBack' %>
+  </div>
+</div>

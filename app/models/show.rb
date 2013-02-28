@@ -35,4 +35,15 @@ class Show < ActiveRecord::Base
     image_tag self.thumb.url(:thumb)
   end
   
+  def column_count
+    count = self.pictures.count
+    if count > 6
+      3
+    elsif count > 1
+      2
+    else
+      1
+    end
+  end
+  
 end

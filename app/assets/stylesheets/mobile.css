@@ -1,3 +1,8 @@
+.offscreen {
+   position: fixed !important;
+   top: -9999em !important; 
+}
+
 #mobileContent {
     overflow: auto;
 }
@@ -7,6 +12,14 @@
     z-index: 1000;
     height: 7em;
     padding: 1em;
+}
+
+#mobileHeaderLink {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15em;
+    height: 9em;
 }
 
 #mobileHeaderImageShadow {
@@ -28,6 +41,15 @@
 
 #mobileHeaderImage img {
     height: 100%;
+}
+
+#mobileHeaderInfo {
+    position: absolute;
+    font-size: .8em;
+    bottom: .25em;
+    right: .25em;
+    text-align: right;
+    text-shadow: 2px 2px 0 black;
 }
 
 #mobileContent {
@@ -78,14 +100,126 @@
     display: block;
 }
 
+.showTitle > h2 > a{
+    color: white;
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+.show .showDesc {
+    padding-bottom: 1em;
+}
+
 .showHeaderDates {
     position: relative;
     top: .25em;
     font-size: 1.8em;
 }
 
-.showDesc {
-    padding-bottom: 1em;
+.showHeader {
+    margin: auto;
+    max-width: 30em;
+}
+
+.showGridBack {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.showGrid .showRow {
+    height: 50%;
+    margin: 0;
+    padding: 0;
+}
+
+.showGrid .showGridSquare {
+    width: 50%;
+    height: 50%;
+    margin: 0;
+    padding: 0;
+    float: left;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 0 black;
+    font-weight: bold;
+    position: relative;
+}
+
+.showGrid .gridSquareSpacer {
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 45%;
+}
+
+.showGrid .showGridSquare a {
+    background: rgba(100,100,100,.5);
+    padding: .25em;
+    box-shadow: .1em .1em 10px black;
+    border-radius: .25em;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.showGrid .showGridCanvas {
+    border-radius: .5em;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.backButton {
+    position: absolute;
+    bottom: .5em;
+    right: .75em;
+    text-shadow: 2px 2px 0 black, 0 0 .25em black;
+    font-size: 1.25em;
+    z-index: 100;
+}
+
+.showGridBack.faded {
+    opacity: .3;
+}
+
+.showGrid .scroller {
+    border-radius: .5em;
+    width: 100%;
+    margin: 0;
+    padding: .25em;
+}
+
+.showGrid .columns {
+    line-height: 0;
+    -webkit-column-gap:   0px;
+    -moz-column-gap:      0px;
+    column-gap:           0px; 
+}
+
+.showGrid .columns-2 {
+    -webkit-column-count: 2;
+    -moz-column-count:    2;
+    column-count:         2;
+}
+.showGrid .columns-3 {
+    -webkit-column-count: 3;
+    -moz-column-count:    3;
+    column-count:         3;    
+}
+
+.showGrid #showPics img {
+    width: 100%;
+    height: auto;
 }
 
 .social img {
