@@ -48,8 +48,6 @@ $(document).ready(function() {
             opacity: .25
         });
 
-        $('#aboutList li').bind('click', clickBadge);
-
 });
 
 function toggleContent() {
@@ -82,35 +80,5 @@ function changePicture() {
 function refresh() {
     var content = $('#content');
     content.height(content.height());
-}
-
-function clickBadge() {
-
-    var faded = 0;
-
-    $(this).addClass('selected').off('click');
-    var notSelected = $('#aboutList li').not('.selected')
-    notSelected.fadeOut('1000',
-        function() {
-            faded++;
-            if(faded == notSelected.length)
-                $('.selected').animate({'width': '45em' },
-                    function() { 
-                        $('.selected .slider').fadeIn('500'); 
-                        $(this).on('click', unclickBadge);
-                    });
-
-        });
-}
-
-function unclickBadge() {
-    $(this).off('click');
-    $('.selected .slider').fadeOut('500',
-        function() { $('.selected').animate({width: '9em'},
-            function() { 
-                $('#aboutList li').fadeIn('1000').removeClass('selected'); 
-                $(this).on('click', clickBadge);
-            });
-        });
 }
 

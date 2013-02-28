@@ -33,13 +33,15 @@
 }
 
 #aboutList li {
+    float: left;
+}
+
+#aboutList .aboutItem {
     position: relative;
     box-shadow: inset 4px 2px 5px black, inset -2px -1px 3px black;
     padding: 1em;
     margin: .5em;
-    width: 9em;
     border-radius: 1em;
-    float: left;
     text-align: left;
     left: .5em;
     overflow: hidden;
@@ -49,20 +51,15 @@
 #aboutList .abouttext {
     position: relative;
     width: 7em;
-    left: 1.5em;
     text-align: center;
 }
 
 #aboutList .slider {
-    padding-left: 10em;
-    position: absolute;
-    top: .33em;
-    left: 1em;
     font-size: .95em;
     display: none;
 }
 
-#aboutList li:before {
+#aboutList .aboutItem:before {
     content: ' ';
     border-radius: 1em;
     position: absolute;
@@ -75,7 +72,7 @@
     opacity: .5;
 }
 
-#aboutList li img {
+#aboutList .aboutItem img {
     position: absolute;
     top: 0;
     left: -.5em;
@@ -84,7 +81,7 @@
     filter:alpha(opacity=30);
 }
 
-#aboutList li:hover { background-color: rgba(255,255,255,.3); }
+#aboutList .aboutItem:hover { background-color: rgba(255,255,255,.3); }
 
 #info, #intro, #about {
     padding: 0 1em;

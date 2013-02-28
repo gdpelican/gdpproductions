@@ -27,6 +27,21 @@ body, html {
         overflow: auto;
 }
 
+#aboutList .aboutItem {
+    width: 9em;
+}
+
+#aboutList .abouttext {
+    left: 1.5em;
+}
+
+#aboutList .slider {
+    padding-left: 10em;
+    position: absolute;
+    top: .33em;
+    left: 1em;
+}
+
 .showPic {
 	height: 9em;
 	width: 9em;
@@ -59,6 +74,10 @@ body, html {
     top: .6em;
     left: 2.5em;
     font-size: 2em;
+}
+
+.showScroller {
+    height: 5em;
 }
 
 .social img {

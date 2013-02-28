@@ -1,0 +1,9 @@
+<% if keyword %>
+<li class="roundFont">
+  <div class="aboutItem">
+    <div class="aboutimg"><%= image_tag '/images/icons/' + keyword + '.PNG'%></div>
+    <div class="abouttext">We make it<br/><h2><%=  keyword.capitalize %></h2></div>
+    <div class="slider"><%=@description[keyword]%></div>
+  </div>
+</li>
+<% end %>
