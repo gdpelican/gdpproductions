@@ -13,6 +13,12 @@ $(window).load(function() {
     $('.scroller').jScrollPane();
     $('#image').fadeIn(5000);
 
+    $('#minimize').html('Check out the picture!').click(toggleContent);
+
+});
+
+$(document).ready(function() {
+
     if($.browser.msie) {
         curvyCorners({
               tl: { radius: 10 },
@@ -24,29 +30,24 @@ $(window).load(function() {
         $('#woTitle').css('bottom', '-.75em').css('right', 0);
     }
 
-    $('#minimize').html('Check out the picture!').click(toggleContent);
 
-});
+    setTimeout(function() { $('#notice, #error').fadeOut('slow'); }, 2000);
+    $('#whatson')
+            //.height($('#woTitle').width())
+            .css('padding-left', $('#woTitle').height())
+            .click(function() { window.location = "/shows/current"; });
 
-$(document).ready(function() {
+    $('#changePicture').click(changePicture);
 
-        setTimeout(function() { $('#notice, #error').fadeOut('slow'); }, 2000);
-    	$('#whatson')
-		//.height($('#woTitle').width())
-		.css('padding-left', $('#woTitle').height())
-		.click(function() { window.location = "/shows/current"; });
+    $(window).resize(refresh());
+    $(window).resize();
 
-        $('#changePicture').click(changePicture);
-
-	$(window).resize(refresh());
-	$(window).resize();
-        
-        $("a[rel^='prettyPhoto']").prettyPhoto({
-            theme: 'dark_rounded',
-            horizontal_padding: 20,
-            show_title: true,
-            opacity: .25
-        });
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+        theme: 'dark_rounded',
+        horizontal_padding: 20,
+        show_title: true,
+        opacity: .25
+    });
 
 });
 
