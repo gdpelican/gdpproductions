@@ -1,6 +1,7 @@
 var selectors = {
     map : '#showMap',
     showGrid : '.showGrid',
+    invisible : '.invisible',
     showGridBack : '.showGridBack',
     activeSquares : '.showGridSquare:not([data-target=showTickets])',
     allSquares : '.showGridSquare',
@@ -8,6 +9,11 @@ var selectors = {
     backButton : '.backButton',
     offscreen : '.offscreen'
 }
+
+$(window).load(function() {
+   $(this).resize(refreshGrid);
+   $(this).resize();
+});
 
 $(document).ready(function() {
     
@@ -30,15 +36,11 @@ $(document).ready(function() {
          $(selectors.allSquares).fadeIn('fast');
        })
     });
-});
-
-$(window).load(function() {
-    $(window).resize(function() {
-        refreshGrid(); 
-    }).resize();
+    
 });
 
 var refreshGrid = function() {
     var showGrid = $(selectors.showGrid);
     showGrid.height(showGrid.width());
+    $(selectors.invisible).removeClass('invisible');
 }

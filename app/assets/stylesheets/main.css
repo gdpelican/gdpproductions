@@ -180,7 +180,11 @@ a img {
 }
 
 .hidden {
-	display: none;
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
 }
 
 .show {
