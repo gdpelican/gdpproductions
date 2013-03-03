@@ -1,5 +1,10 @@
 <% @title = 'About Us'  %>
 <%= stylesheet_link_tag 'about' %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    aboutInitialize(<%= mobile? %>)
+  });
+</script>
 
 <% if mobile? %>
   <div id="about">
