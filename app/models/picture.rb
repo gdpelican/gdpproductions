@@ -1,11 +1,11 @@
 class Picture < ActiveRecord::Base
-  
-  belongs_to :show 
-  
-  validates_presence_of :alt 
+
+  belongs_to :show
+
+  validates_presence_of :alt
   validates_presence_of :show_id
   #validates_presence_of :cover_photo_ind
-  
+
   validates_attachment_presence :picture
 
   has_attached_file :picture,
@@ -18,19 +18,18 @@ class Picture < ActiveRecord::Base
      :s3_credentials => "#{Rails.root}/config/s3.yml",
      :path => "/:style/:id/:filename",
      :bucket => 'GDProd-TEST'
-
   def self.random(show, current)
     if (show == nil)
       self.where(:cover_photo_ind => true)
-          .where('id NOT IN (?)', current || -1)
-          .first(:order => "RANDOM()")
+      .where('id NOT IN (?)', current || -1)
+      .first(:order => "RANDOM()")
     else
       show.pictures.where(:cover_photo_ind => true)
-                   .where('id NOT IN (?)', current || -1)
-                   .first(:order => "RANDOM()")
+      .where('id NOT IN (?)', current || -1)
+      .first(:order => "RANDOM()")
     end
   end
-  
+
   def self.has_other_picture(show)
     if(show == nil)
       self.where(:cover_photo_ind => true).count > 1
@@ -39,8 +38,8 @@ class Picture < ActiveRecord::Base
     end
   end
   
-  def photographer
-    super || self.show.photographer
+  def get_photographer
+     self.photographer || self.show.photographer
   end
-  
+
 end
