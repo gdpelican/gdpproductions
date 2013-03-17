@@ -15,8 +15,7 @@ class ApplicationController < ActionController::Base
     @links = Link.all
     @socials = Social.all
     @current = Show.current
-    @picture_mode = 'any'            
-    @platform = session[:mobile] ? 'mobile' : 'desktop'
+    @picture_mode = 'any'
     
   end
   

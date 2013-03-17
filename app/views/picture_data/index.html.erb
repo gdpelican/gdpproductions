@@ -6,8 +6,8 @@
     <li><%=@picture.caption %></li>
     <li><%=@picture.show.title %></li>
     <li><%=@picture.show.start_date.strftime("%b %Y").tr('0', 'O') %>
-    <% if @picture.show.photographer and !@picture.show.photographer.empty? %>
-      <li><%= 'Photo Credit: ' + @picture.show.photographer %></li>
+    <% if @picture.photographer and !@picture.photographer.empty? %>
+      <li><%= 'Photo Credit: ' + @picture.photographer %></li>
     <% end %>
     <% if has_other_picture %>
       <li class="hover" id="changePicture">Change Picture</li>

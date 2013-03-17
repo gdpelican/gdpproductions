@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517153018) do
+ActiveRecord::Schema.define(:version => 20130316235526) do
 
   create_table "links", :force => true do |t|
     t.string    "text"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20120517153018) do
     t.boolean   "cover_photo_ind"
     t.timestamp "created_at",           :null => false
     t.timestamp "updated_at",           :null => false
+    t.string    "photographer"
   end
 
   add_index "pictures", ["show_id"], :name => "index_pictures_on_show_id"

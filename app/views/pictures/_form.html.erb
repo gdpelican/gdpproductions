@@ -33,6 +33,10 @@
         <%= f.radio_button :cover_photo_ind, 'true' %> True<br/>
         <%= f.radio_button :cover_photo_ind, 'false' %> False
   </div>
+  <div class="field">
+    <%= f.label :photographer %><br />
+    <%= f.text_field :photographer %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

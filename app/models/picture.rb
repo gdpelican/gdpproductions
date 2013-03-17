@@ -39,4 +39,8 @@ class Picture < ActiveRecord::Base
     end
   end
   
+  def photographer
+    super || self.show.photographer
+  end
+  
 end
