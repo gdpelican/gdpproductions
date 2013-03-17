@@ -45,7 +45,8 @@ $(document).ready(function() {
             theme: 'dark_rounded',
             horizontal_padding: 20,
             show_title: false,
-            opacity: .25
+            opacity: .25,
+            social_tools: ''
         });
 
 });
