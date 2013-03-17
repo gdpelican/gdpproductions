@@ -37,14 +37,14 @@ $(document).ready(function() {
 		.click(function() { window.location = "/shows/current"; });
 
         $('#changePicture').click(changePicture);
-
-	$(window).resize(refresh());
-	$(window).resize();
+	
+		$(window).resize(refresh());
+		$(window).resize();
         
         $("a[rel^='prettyPhoto']").prettyPhoto({
             theme: 'dark_rounded',
             horizontal_padding: 20,
-            show_title: true,
+            show_title: false,
             opacity: .25
         });
 
