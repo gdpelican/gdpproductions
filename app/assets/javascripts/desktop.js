@@ -29,6 +29,12 @@ $(window).load(function() {
 });
 
 $(document).ready(function() {
+	
+		if(screen.width < 700) {
+			$.post('/mobile/on', function() {
+				document.location.reload();	
+			})
+		}
 
         setTimeout(function() { $('#notice, #error').fadeOut('slow'); }, 2000);
     	$('#whatson')
@@ -82,4 +88,3 @@ function refresh() {
     var content = $('#content');
     content.height(content.height());
 }
-

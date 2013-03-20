@@ -19,6 +19,10 @@ GDP::Application.routes.draw do
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#destroy'
 
+  match 'mobile/on' => 'mobile#on'
+  match 'mobile/off' => 'mobile#off'
+  match 'mobile/show' => 'mobile#show'
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

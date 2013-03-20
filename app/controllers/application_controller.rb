@@ -7,9 +7,7 @@ class ApplicationController < ActionController::Base
   
   def init
         
-    session[:mobile] = params[:mobile] || 
-                       session[:mobile] ||
-                       request.user_agent =~ /WebOS|mobile/
+    @platform = (session[:mobile]) ? 'mobile' : 'desktop'
     
     @user =  session[:id] ? Session.find_by_id(session[:id]).person : nil
     @links = Link.all

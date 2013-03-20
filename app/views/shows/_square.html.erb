@@ -1,0 +1,26 @@
+<% if condition %> 
+  <div data-target="show<%= name %>"  class="showGridSquare">
+    <div class="gridSquareSpacer">
+      <a <%= !href.empty? ? 'href=' + href : '' %>>
+        <% if icon %>
+          <i class="icon-<%= icon %>"></i>
+        <% end %>
+          <span><%= name %></span>
+      </a>
+    </div>
+  </div>
+
+  <div id="show<%= name %>" class="showGridCanvas offscreen">
+    <div class="scroller <%= name == 'Pics' ? 'columns columns-' + @show.column_count.to_s : '' %>">
+      <% 
+        case(name)
+          when 'Info' then %>
+            <%= raw RedCloth.new(@show.description).to_html %>
+       <% when 'Pics' then
+            @show.pictures.each do |p| %>
+              <%= link_to image_tag(p.picture.url(:thumb)), p.picture.url, :rel  => 'prettyphoto[show]' %>
+          <% end 
+        end %>
+    </div>
+  </div>
+<% end %>

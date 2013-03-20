@@ -13,4 +13,6 @@
  *= require jquery.scrollbars
  *= require jquery.jscrollpane
  *= require_tree .
+ *= stub desktop
+ *= stub mobile
 */
