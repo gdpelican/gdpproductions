@@ -16,6 +16,8 @@ GDP::Application.routes.draw do
 
   #resources :people, :only => :new, :create
 
+  match 'shows/:id/:page' => 'shows#page'
+
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#destroy'
 

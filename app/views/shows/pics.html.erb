@@ -1,0 +1,5 @@
+<%= params[:id] %>
+<%= @test %>
+<% Show.find(11).pictures.each do |p| %>
+	<%= link_to image_tag(p.picture.url(:thumb)), p.picture.url %>
+<% end %>

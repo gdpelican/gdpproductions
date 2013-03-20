@@ -106,6 +106,15 @@ class ShowsController < ProtectedController
       format.xml  { head :ok }
     end
   end
+  
+  def page
+    @show = Show.find(params[:id])
+    @action = params[:action]
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @show }
+    end
+  end
 
   def picture_mode
     @picture_mode = @show.id

@@ -1,6 +1,6 @@
 <div id="show<%= show.id %>" class="show rounded hover">
 	<div class="showPic">
-		<%= image_tag show.thumb.url(:thumb), :class => 'roundedNoIE' %>
+		<%= link_to image_tag(show.thumb.url(:thumb), :class => 'roundedNoIE'), '/shows/' + show.id.to_s %>
 	</div>	
         <div class="showText">
 		<div class="showTitle hover"><h2><%= link_to(show.title, "/shows/" + show.id.to_s()) %></h2><%=
