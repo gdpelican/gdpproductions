@@ -1,9 +1,9 @@
 var selectors = {
-    map : '#showMap',
     showGrid : '.showGrid',
     invisible : '.invisible',
     showGridBack : '.showGridBack',
-    activeSquares : '.showGridSquare:not([data-target=showTickets])',
+    activeSquares : '.showGridSquare:not([data-link=true])',
+    inactiveSquares : '.showGridSquare[data-link=true]',
     allSquares : '.showGridSquare',
     showGridCanvas : '.showGridCanvas:not(#showMap)',
     backButton : '.backButton',
@@ -29,12 +29,11 @@ $(document).ready(function() {
     });
     
     $(selectors.backButton).click(function() {
-       $(selectors.map).addClass('offscreen');
        $(selectors.showGridCanvas).fadeOut('fast', function() {
          $(selectors.backButton).fadeOut('fast');
          $(selectors.showGridBack).removeClass('faded');
          $(selectors.allSquares).fadeIn('fast');
-       })
+       });
     });
     
 });

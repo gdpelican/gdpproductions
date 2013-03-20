@@ -14,7 +14,7 @@
       } %>
       <%= render :partial => 'square', :locals => {
                  :name => 'Map',
-                 :href => '',
+                 :href => 'http://www.maps.google.com/?q=' + URI::encode(@show.venue.address),
                  :icon => 'flag',
                  :condition => true
       } %>
