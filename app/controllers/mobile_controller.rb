@@ -2,12 +2,12 @@ class MobileController < ApplicationController
   
   def on
     session[:mobile] = true
-    redirect_to :controller => :mobile , :action => :show
+    redirect_to :controller => :links, :action => :index
   end
   
   def off
     session[:mobile] = nil
-    redirect_to :controller => :mobile , :action => :show
+    redirect_to :controller => :about , :action => :index
   end
   
   def show

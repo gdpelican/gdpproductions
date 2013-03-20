@@ -2,7 +2,7 @@ GDP::Application.routes.draw do
 
   resources :socials
 
-  root :to => 'about#index'
+  root :to => 'root#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
