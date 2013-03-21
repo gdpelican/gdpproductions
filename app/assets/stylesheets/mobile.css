@@ -1,6 +1,5 @@
-.offscreen {
-   position: fixed !important;
-   top: -9999em !important; 
+#body {
+	overflow-x: hidden;
 }
 
 #mobileContent {
