@@ -1,7 +1,6 @@
 var selectors = {
     showGrid : '.showGrid',
-    invisible : '.invisible',
-    
+    invisible : '.invisible'
 }
 
 $(window).load(function() {

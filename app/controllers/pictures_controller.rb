@@ -1,5 +1,20 @@
 class PicturesController < ProtectedController
   
+  before_filter :one_show, :only => [:show, :page]
+  before_filter :any_show, :only => [:index]
+
+  def one_show
+    begin
+      @picture_mode = Picture.find(params[:id]).show.id
+    rescue
+      @picture_mode = 'current'
+    end
+  end
+      
+  def any_show
+    @picture_mode = 'any'
+  end
+  
   # GET /pictures
   # GET /pictures.xml
   def index

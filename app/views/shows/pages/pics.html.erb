@@ -1,6 +1,6 @@
 <div class="picture-viewer columns columns-<%= @show.column_count %>">
 	<% @show.pictures.each do |p| %>
-		<%= link_to image_tag(p.picture.url(:thumb)), p.picture.url %>
+		<%= link_to image_tag(p.picture.url(:thumb)), picture_url(p.id) %>
 	<% end %>
 </div>
 <div class="back-button roundFont"><%= link_to 'Back', show_path(@show.id) %></div>

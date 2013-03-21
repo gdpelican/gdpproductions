@@ -11,6 +11,7 @@
     position: relative;
     z-index: 1000;
     height: 7em;
+    width: 7em;
     padding: 1em;
 }
 
@@ -252,7 +253,7 @@
 
 .popup-modal {
 	position:fixed;
-	top:150px;
+	top:100px;
 	margin:0;
 	border:2px solid #AAD;
 	width:180px;
