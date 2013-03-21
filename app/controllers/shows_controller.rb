@@ -110,6 +110,7 @@ class ShowsController < ProtectedController
   def page
     @show = Show.find(params[:id])
     @page = params[:page]
+    @footer = false
     
     respond_to do |format|
       format.html { render :template => 'shows/pages/' + @page }

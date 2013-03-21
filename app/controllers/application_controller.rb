@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
     @socials = Social.all
     @current = Show.current
     @picture_mode = 'any'
+    @footer = @platform == 'mobile'
     
   end
   

@@ -14,4 +14,6 @@
   <% end %>
 </div>
 <div id="mobileContent"><%= yield %></div>
-<div id="mobileFooter"><%= render :template => 'socials/index' %></div>
+<%if @footer %>
+	<div id="mobileFooter"><%= render :template => 'socials/index' %></div>
+<% end %>
