@@ -57,6 +57,10 @@
     padding: 1em;
 }
 
+#mobileContent > img {
+	width: 100%;
+}
+
 #menu>ul>li {
     padding: 1em 0;
     margin: -1em -1em 1.5em -1em;
@@ -253,7 +257,7 @@
 
 .popup-modal {
 	position:fixed;
-	top:100px;
+	top:150px;
 	margin:0;
 	border:2px solid #AAD;
 	width:180px;
