@@ -56,9 +56,12 @@ function mobileClickBadge() {
 		$(aboutSelectors.popupOverlay).css('opacity', .4);
 		$(aboutSelectors.popup).click(function() { 
 			$(aboutSelectors.aboutSelected).removeClass('selected');
-			$(aboutSelectors.popup).remove(); 
+			$(aboutSelectors.popup).css('opacity', 0);
+			setTimeout(function() {
+				$(aboutSelectors.popup).remove(); 				
+			}, 500);
 		});
-	}, 300);
+	}, 100);
 }
 
 function unclickBadge() {

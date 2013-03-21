@@ -1,6 +1,6 @@
 class ShowsController < ProtectedController
   
-  before_filter :one_show, :only => [:show]
+  before_filter :one_show, :only => [:show, :page]
   before_filter :any_show, :only => [:index]
 
   def one_show
@@ -109,10 +109,9 @@ class ShowsController < ProtectedController
   
   def page
     @show = Show.find(params[:id])
-    @action = params[:action]
+    @page = params[:page]
     respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @show }
+      format.html { render :template => 'shows/pages/' + @page }
     end
   end
 

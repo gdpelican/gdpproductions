@@ -192,34 +192,40 @@
     opacity: .3;
 }
 
-.showGrid .scroller {
-    border-radius: .5em;
-    width: 100%;
-    margin: 0;
-    padding: .25em;
-}
-
-.showGrid .columns {
+.picture-viewer.columns {
     line-height: 0;
     -webkit-column-gap:   0px;
     -moz-column-gap:      0px;
     column-gap:           0px; 
 }
 
-.showGrid .columns-2 {
+.picture-viewer.columns-2 {
     -webkit-column-count: 2;
     -moz-column-count:    2;
     column-count:         2;
 }
-.showGrid .columns-3 {
+.picture-viewer.columns-3 {
     -webkit-column-count: 3;
     -moz-column-count:    3;
     column-count:         3;    
 }
 
-.showGrid #showPics img {
+.picture-viewer img {
     width: 100%;
     height: auto;
+}
+
+.back-button {
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+}
+
+.back-button a {
+	font-size: 1.5em;
+	text-shadow: 2px 2px 0 black;
+	color: white;
+	text-decoration: none;
 }
 
 .social img {
@@ -227,6 +233,11 @@
     width: 2.5em;
     height: 2.5em;
     padding-left: 2em;
+}
+
+.popup {
+	opacity: 0;
+	-webkit-transition: opacity 0.5s ease-in;
 }
 
 .popup-overlay {
@@ -240,22 +251,22 @@
 }
 
 .popup-modal {
-  position:fixed;
-  top:150px;
-  margin:0;
-  border:2px solid #fff;
-  width:180px;
-  text-align:center;
-  word-spacing:2px;
-  line-height:15px;
-  font-weight:bold;
-  font-size:13px;
-  color:#fff;
-  padding:10px;
-  opacity:0;
-  z-index:102;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #7c9bc0), color-stop(2%, #416086), color-stop(100%, #293e56));
-  -webkit-border-radius:8px;
-  -webkit-box-shadow:-1px 2px 12px rgba(0, 0, 0, 0.91);
-  -webkit-transition: opacity 0.3s ease-in;
+	position:fixed;
+	top:150px;
+	margin:0;
+	border:2px solid #AAD;
+	width:180px;
+	text-align:center;
+	word-spacing:2px;
+	line-height:15px;
+	font-weight:bold;
+	font-size:13px;
+	color:#fff;
+	padding:10px;
+	opacity:0;
+	z-index:102;
+	background-image: url('/images/patterns/weave.gif');
+	-webkit-border-radius:8px;
+	box-shadow: inset 0 0 10px 1px #AAD;
+	text-shadow: 1px 1px 0 black;
 }

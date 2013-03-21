@@ -1,0 +1,2 @@
+<%= raw RedCloth.new(@show.description).to_html %>
+<div class="back-button roundFont"><%= link_to 'Back', show_path(@show.id) %></div>
