@@ -31,8 +31,9 @@ $(window).load(function() {
 $(document).ready(function() {
 	
 		if(screen.width < 700) {
+			$('#body').hide();
 			$.post('/mobile/on', function() {
-				document.location.reload();	
+				document.location.href='/';	
 			});
 		}
 
