@@ -49,6 +49,7 @@ class PicturesController < ProtectedController
   def show
 
     @picture = Picture.find(params[:id])
+    @footer = false
 
     respond_to do |format|
       format.html # show.html.erb
