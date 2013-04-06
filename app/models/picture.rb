@@ -39,7 +39,11 @@ class Picture < ActiveRecord::Base
   end
   
   def get_photographer
-     self.photographer || self.show.photographer
+     if !self.photographer.to_s.empty?
+       self.photographer
+     else
+       self.show.photographer
+     end
   end
 
 end
