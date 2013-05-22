@@ -28,5 +28,9 @@ module ApplicationHelper
     session[:mobile]
   end
   
+  def get_picture
+    @picture = @platform == 'mobile' ? Picture.get_picture(@picture_mode, nil) : nil
+  end
+  
 end
   
