@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require jquery.watch
 //= stub desktop
 //= stub mobile

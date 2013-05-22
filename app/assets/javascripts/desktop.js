@@ -11,7 +11,6 @@ var show = 'Take me back!';
 $(window).load(function() {
 
     $('.scroller').jScrollPane();
-    $('#image').fadeIn(5000);
 
     if($.browser && $.browser.msie) {
         curvyCorners({
@@ -23,9 +22,8 @@ $(window).load(function() {
             }, '.rounded');
         $('#woTitle').css('bottom', '-.75em').css('right', 0);
     }
-
+    
     $('#minimize').html('Check out the picture!').click(toggleContent);
-
 });
 
 $(document).ready(function() {
@@ -48,6 +46,7 @@ $(document).ready(function() {
 		.click(function() { window.location = "/shows/current"; });
 
         $('#changePicture').click(changePicture);
+    	changePicture();
 	
 		$(window).resize(refresh());
 		$(window).resize();
@@ -130,15 +129,36 @@ function toggleContent() {
     }
 }
 
+
 function changePicture() {
-    $('#image').fadeOut('5000', function() {
-     $.get('/picture_data/', {mode: $('#pictureMode').html(), id: $('#image').attr('title')}, function(data) {
-        $('#pictureData').html(data);
-        $('#image img').bind('load', function() { $('#image').fadeIn('5000'); });
-        $('#imageInfo').css('display', 'block');
-        $('#minimize').html(show).click(toggleContent);
-        $('#changePicture').click(changePicture);
-     })});
+	var container = $('#image');
+	var img = $('img', container);
+	var title = container.attr('title') || '';
+	var mode = $('#pictureMode').html();
+	
+	container.fadeOut(500, function() { 
+		$.get('/picture_data/' + mode + '/' + title, 
+		  	  function(data) { 
+		  	  	img.one('load', function() { 
+		  	  		$('#pictureCaption').html(data.caption);
+		  	  		$('#pictureShow').html(data.showTitle);
+		  	  		$('#pictureShowDate').html(data.showDate);
+		  	  		$('#picturePhotographer').html(data.photographer);
+		  	  		container.fadeIn(2500); 
+		  	  	});
+		  	  	if(data.url)
+		  	  		img.attr('src', data.url);
+		  	  });
+	});
+}
+
+
+function lazyLoad(target, src) {
+	var targetImg = target.is('img') ? target : $('img', target);
+
+	if(targetImg)
+    	targetImg.one('load', function() { alert('load called'); target.fadeIn('4000') })
+    		     .attr('src', src);
 }
 
 function refresh() {

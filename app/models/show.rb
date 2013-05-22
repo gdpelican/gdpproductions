@@ -18,6 +18,10 @@ class Show < ActiveRecord::Base
      :path => '/:style/:id/:filename',
      :bucket => 'GDProdThumbs-TEST'
 
+  def formatted_start_date
+    self.start_date.strftime("%b %Y").tr('0', 'O')
+  end
+
   def self.current
     upcoming = where("shows.end_date > ?", Time.new).order('shows.end_date ASC')
     if (upcoming.any?)

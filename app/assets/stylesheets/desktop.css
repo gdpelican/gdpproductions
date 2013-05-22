@@ -136,3 +136,7 @@ body, html {
 .social img:hover {
     opacity: 1;
 }
+
+.hover, .aboutItem { 
+	cursor: pointer;	
+}

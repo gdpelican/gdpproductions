@@ -24,6 +24,8 @@ GDP::Application.routes.draw do
   match 'mobile/on' => 'mobile#on'
   match 'mobile/off' => 'mobile#off'
   match 'mobile/show' => 'mobile#show'
+  
+  match 'picture_data/:mode(/:id)' => 'picture_data#index', :format => 'json'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

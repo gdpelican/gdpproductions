@@ -1,18 +1,14 @@
-<% if get_picture %>
-  <div id="image" class="hidden" title="<%=@picture.id%>"><%= image_tag @picture.picture.url %></div>
+  <div id="image" class="hidden"><%= image_tag 'blank.gif' %></div>
   <div id="minimize" class="transBack roundFont hover"></div>
 
   <ul id="imageInfo" class="hidden transBack roundFont">
-    <li><%=@picture.caption %></li>
-    <li><%=@picture.show.title %></li>
-    <li><%=@picture.show.start_date.strftime("%b %Y").tr('0', 'O') %>
-    <% if @picture.get_photographer %>
-      <li><%= 'Photo Credit: ' + @picture.get_photographer %></li>
-    <% end %>
+    <li id="pictureCaption"></li>
+    <li id="pictureShow"></li>
+    <li id="pictureShowDate"></li>
+    <li id="picturePhotographer"></li>
     <% if has_other_picture %>
       <li class="hover" id="changePicture">Change Picture</li>
     <% end %>
   </ul>
 
   <div id="pictureMode" class="hidden"><%= @picture_mode %></div>
-<% end %>
