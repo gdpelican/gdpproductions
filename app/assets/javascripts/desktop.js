@@ -144,7 +144,7 @@ function changePicture() {
 		  	  		$('#pictureShow').html(data.showTitle);
 		  	  		$('#pictureShowDate').html(data.showDate);
 		  	  		$('#picturePhotographer').html(data.photographer);
-		  	  		container.fadeIn(2500); 
+		  	  		container.fadeIn(5000); 
 		  	  	});
 		  	  	if(data.url)
 		  	  		img.attr('src', data.url);

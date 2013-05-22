@@ -18,16 +18,16 @@ class Picture < ActiveRecord::Base
      :s3_credentials => "#{Rails.root}/config/s3.yml",
      :path => "/:style/:id/:filename",
      :bucket => 'GDProd-TEST'
-  def self.random(show, current)
-    if (show == nil)
-      self.where(:cover_photo_ind => true)
-      .where('id NOT IN (?)', current || -1)
-      .first(:order => "RANDOM()")
-    else
-      show.pictures.where(:cover_photo_ind => true)
-      .where('id NOT IN (?)', current || -1)
-      .first(:order => "RANDOM()")
-    end
+  
+  def self.get_picture(mode, past_id) 
+    case mode
+      when 'any'
+        @picture = self.random(nil, past_id)
+      when 'current'
+        @picture = self.random(Show.current, past_id)
+      else
+        @picture = self.random(Show.find(mode), past_id)
+      end
   end
 
   def self.has_other_picture(show)
@@ -44,6 +44,20 @@ class Picture < ActiveRecord::Base
      else
        self.show.photographer
      end
+  end
+  
+  private 
+  
+  def self.random(show, current)
+    if (show == nil)
+      self.where(:cover_photo_ind => true)
+      .where('id NOT IN (?)', current || -1)
+      .first(:order => "RANDOM()")
+    else
+      show.pictures.where(:cover_photo_ind => true)
+      .where('id NOT IN (?)', current || -1)
+      .first(:order => "RANDOM()")
+    end
   end
 
 end
