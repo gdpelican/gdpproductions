@@ -20,14 +20,14 @@
       } %>
       <%= render :partial => 'square', :locals => {
                  :name => 'Pics',
-                 :href => '',
+                 :href => show_pictures_url(@show.id),
                  :icon => 'camera',
                  :condition => @show.pictures.count > 0
       } %>
       
       <%= render :partial => 'square', :locals => {
                  :name => 'Info',
-                 :href => '',
+                 :href => show_info_url(@show.id),
                  :icon => 'info-sign',
                  :condition => !@show.description.empty?
       } %>

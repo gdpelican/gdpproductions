@@ -14,6 +14,8 @@ gem 'jquery-rails', '>= 1.0.12'
 #Heroku
 gem 'heroku'
 
+gem 'rake'
+
 group :production do
   # gems specifically for Heroku
   gem "pg"

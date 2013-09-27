@@ -19,31 +19,27 @@ class Picture < ActiveRecord::Base
      :path => "/:style/:id/:filename",
      :bucket => 'GDProd-TEST'
   
-  def self.get_picture(mode, past_id) 
-    case mode
-      when 'any'
-        @picture = self.random(nil, past_id)
-      when 'current'
-        @picture = self.random(Show.current, past_id)
-      else
-        @picture = self.random(Show.find(mode), past_id)
-      end
+  def as_json(mobile = false, options = nil)
+    picture_photographer = photographer.presence || show.photographer
+    data = { id: self.id, 
+             show_id: show.id.to_s,
+             caption: self.caption,
+             photographer: if picture_photographer.presence then 'Photo Credit: ' + picture_photographer end,
+             start_date: show.formatted_start_date,
+             title: show.title,
+             url: if mobile then picture.url(:thumb) else picture.url end }
+     
+    data[:has_others] = Picture.has_other_picture(show) unless mobile
+    
+    data
   end
 
   def self.has_other_picture(show)
     if(show == nil)
-      self.where(:cover_photo_ind => true).count > 1
+      self.where(cover_photo_ind: true).count > 1
     else
-      show.pictures.where(:cover_photo_ind => true).count > 1
+      show.pictures.where(cover_photo_ind: true).count > 1
     end
-  end
-  
-  def get_photographer
-     if !self.photographer.to_s.empty?
-       self.photographer
-     else
-       self.show.photographer
-     end
   end
   
   private 

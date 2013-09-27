@@ -1,7 +1,5 @@
-//= require jquery.prettyPhoto
 //= require jquery.scrollbars
 //= require jquery.jscrollpane.min
-//= require curvycorners
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
@@ -12,18 +10,10 @@ $(window).load(function() {
 
     $('.scroller').jScrollPane();
 
-    if($.browser && $.browser.msie) {
-        curvyCorners({
-              tl: { radius: 10 },
-              tr: { radius: 10 },
-              bl: { radius: 10 },
-              br: { radius: 10 },
-              antiAlias: true
-            }, '.rounded');
-        $('#woTitle').css('bottom', '-.75em').css('right', 0);
-    }
+    if($.browser && $.browser.msie)
+        $('#woTitle').css('bottom', '-.75em').css('right', '-.5em');
     
-    $('#minimize').html('Check out the picture!').click(toggleContent);
+    $('#minimize').click(toggleContent);
 });
 
 $(document).ready(function() {
@@ -44,22 +34,50 @@ $(document).ready(function() {
 		//.height($('#woTitle').width())
 		.css('padding-left', $('#woTitle').height())
 		.click(function() { window.location = "/shows/current"; });
-
-        $('#changePicture').click(changePicture);
-    	changePicture();
 	
-		$(window).resize(refresh());
-		$(window).resize();
+		$(window).resize(refresh);
+		refresh();
         
-        $("a[rel^='prettyPhoto']").prettyPhoto({
-            theme: 'dark_rounded',
-            horizontal_padding: 20,
-            show_title: false,
-            opacity: .25,
-            social_tools: ''
+        $('.lazy-load').each(function() {
+        	var _this = $(this);
+        	if(_this.is('img') && _this.data('src'))
+        	{
+        		_this.attr('src', _this.data('src')).one('load', function() {
+        			_this.fadeIn(3000);
+        		});
+        	}
+        });
+        
+        $('#showGalleryLink, #hideGalleryLink').click(function(e) {
+        	e.preventDefault();
+        	$('#showGallery, #showInfo, #showThumb, #mapInfo').slideToggle(function() {
+	        	$(this).closest('.scroller').data('jsp').reinitialise();    		
+        	});
+        });  
+        
+        $('.showGalleryImage').on('click', 'a, .fullImage', function() { 
+        	var _this = $(this);
+        	if(_this.hasClass('fullImage')) {
+        		_this.fadeOut(function() {
+        			_this.parent().animate({ height: '5em' }, 'slow')
+        						  .animate({ width: '5em' }, 'slow', function() {
+        						  toggleSquareElements(_this);
+        			});
+        		});
+        	}
+        	else
+        		toggleSquareElements($(this)); 
         });
 
 });
+
+function toggleSquareElements(el) {
+	var _square = el.parent();      	        	
+	_square.toggleClass('activeSquare')
+	_square.siblings().fadeToggle();
+	_square.find('.thumbnail').fadeToggle();
+	_square.closest('.scroller').data('jsp').reinitialise();
+};
 
 function renderMap() {
 
@@ -127,38 +145,6 @@ function toggleContent() {
             $('#menu ul li a').animate({'opacity': 1}).off('mouseenter').off('mouseleave');
             minimize.html(hide); break;
     }
-}
-
-
-function changePicture() {
-	var container = $('#image');
-	var img = $('img', container);
-	var title = container.attr('title') || '';
-	var mode = $('#pictureMode').html();
-	
-	container.fadeOut(500, function() { 
-		$.get('/picture_data/' + mode + '/' + title, 
-		  	  function(data) { 
-		  	  	img.one('load', function() { 
-		  	  		$('#pictureCaption').html(data.caption);
-		  	  		$('#pictureShow').html(data.showTitle);
-		  	  		$('#pictureShowDate').html(data.showDate);
-		  	  		$('#picturePhotographer').html(data.photographer);
-		  	  		container.fadeIn(5000); 
-		  	  	});
-		  	  	if(data.url)
-		  	  		img.attr('src', data.url);
-		  	  });
-	});
-}
-
-
-function lazyLoad(target, src) {
-	var targetImg = target.is('img') ? target : $('img', target);
-
-	if(targetImg)
-    	targetImg.one('load', function() { alert('load called'); target.fadeIn('4000') })
-    		     .attr('src', src);
 }
 
 function refresh() {

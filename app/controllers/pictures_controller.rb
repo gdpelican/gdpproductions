@@ -1,45 +1,18 @@
 class PicturesController < ProtectedController
   
-  before_filter :one_show, :only => [:show, :page]
-  before_filter :any_show, :only => [:index]
-
-  def one_show
-    begin
-      @picture_mode = Picture.find(params[:id]).show.id
-    rescue
-      @picture_mode = 'current'
-    end
-  end
-      
-  def any_show
-    @picture_mode = 'any'
+  before_filter :get_show
+  
+  def get_show
+    @show = Show.find(params[:show_id])
+    @background = Background.new session[:mobile], params[:show_id]
   end
   
   # GET /pictures
   # GET /pictures.xml
   def index
-        
-    if (params[:mode].nil?)
-      params[:mode] = 'any'
-    end 
-       
-    case params[:mode]
-      when 'any'
-        @picture = Picture.random(nil)
-      when 'current'
-        @picture = Picture.random(Show.current)
-      else
-        @picture = Picture.random(Show.find(params[:mode]))
-    end
-    
-    if @picture.nil?
-      @picture = Picture.random(nil)
-    end
-        
+    @thumb_size = :thumb
     respond_to do |format|
-      format.html { render :show, :id => @picture.id, :layout => false }
-      format.xml  { render :xml => @picture }
-      format.json { render :json => @picture }
+      format.html
     end
 
   end
@@ -53,8 +26,7 @@ class PicturesController < ProtectedController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @picture }
-      format.json { render :json => @picture }
+      format.js { render 'show', locals: { picture: @picture.as_json(session[:mobile]) } }
     end
   end
 
@@ -65,7 +37,6 @@ class PicturesController < ProtectedController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @picture }
     end
   end
 
@@ -78,14 +49,13 @@ class PicturesController < ProtectedController
   # POST /pictures.xml
   def create
     @picture = Picture.create(params[:picture])
+    @picture.show_id = @show.id
   
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to(@picture, :notice => 'Picture was successfully created.') }
-        format.xml  { render :xml => @picture, :status => :created, :location => @picture }
+        format.html { redirect_to(show_pictures_url(@picture), :notice => 'Picture was successfully created.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @picture.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -97,11 +67,9 @@ class PicturesController < ProtectedController
 
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
-        format.html { redirect_to(@picture, :notice => 'Picture was successfully updated.') }
-        format.xml  { head :ok }
+        format.html { redirect_to(show_pictures_url(@picture), :notice => 'Picture was successfully updated.') }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @picture.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -114,7 +82,6 @@ class PicturesController < ProtectedController
 
     respond_to do |format|
       format.html { redirect_to(pictures_url) }
-      format.xml  { head :ok }
     end
   end
 end

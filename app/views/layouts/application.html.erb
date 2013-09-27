@@ -14,10 +14,10 @@
 <body>
 
 <% if session[:id] %>
-  <div id="loggedin"></div>
+  <div id="loggedin" />
 <% end %>
  
-<div id="body">
-	<%= render :template => 'layouts/' + @platform %>
+<div id="<%= @platform %>-body"><%= render :template => 'layouts/' + @platform %></div>
+
 </body>
 </html>

@@ -1,0 +1,11 @@
+<% if background.picture %>
+	<%= link_to '', '/shows/' + background.picture[:show_id], id: "mobileHeaderLink" %>
+	<div id="mobileHeaderImage" class="invisible" title="<%= background.picture[:id] %>">
+	  <div id="mobileHeaderImageShadow" /></div>
+	  <%= image_tag background.picture[:url] %>
+	  <div id="mobileHeaderInfo" class="roundFont">
+	    <div><%= background.picture[:title] %></div>
+	    <div><%= background.picture[:start_date] %></div>
+	  </div>
+    </div>
+<% end %>

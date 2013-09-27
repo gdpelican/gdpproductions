@@ -1,0 +1,5 @@
+<div class="fullImage hidden">
+	<div class="pictureMat"></div>
+	<img alt="<%= picture[:alt] %>" src="<%= picture[:url] %>" />
+	<div class="pictureData"><%= render partial: 'partials/picture_data', locals: { picture: picture } %></div>
+</div>

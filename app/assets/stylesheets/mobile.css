@@ -1,7 +1,3 @@
-#body {
-	
-}
-
 #mobileContent {
     overflow: auto;
 }
@@ -64,7 +60,7 @@
 	margin-bottom: -2em;
 }
 
-#menu>ul>li, #mobileFooter>li {
+#menu>ul>li, #mobileFooter {
     padding: 1em 0;
     margin: -1em -1em 1.5em -1em;
     box-shadow: inset 0 0 15px black;
@@ -72,25 +68,17 @@
     background-image: url('/images/patterns/weave.gif');
 }
 
-#mobileFooter>li {
-	margin: -1em 0 1.5em 0;
-}
-
-#menu>ul>li.social {
-	display: none;
-}
-
 #mobileFooter {
-	margin-top: 1em;
-}
-
-#mobileFooter>li {
+	margin: .1em 0 0 0;
+	padding: .5em;
 	text-align: center;
 }
 
-#menu>ul>li>a {
-    padding-right: 2em;
+#mobileFooter img {
+	padding: .5em;
     font-size: 2em;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 #aboutList li {
@@ -143,6 +131,7 @@
 .showHeader {
     margin: auto;
     max-width: 30em;
+    position: relative;
 }
 
 .showGridBack {

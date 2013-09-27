@@ -19,27 +19,63 @@
     padding-right: 10em;
 }
 
-.formtastic .string input, .formtastic .text textarea {
+.formtastic .string input, 
+.formtastic .email input,
+.formtastic .text textarea {
       width: 30em;
       margin: 1em;
-      padding: .25em;
+      padding: .25em .25em .25em 1em;
       font-size: 13px;
       border-radius: .75em;
       box-shadow: 1px 1px #CCC;
       border: none;
       color: white;
       background-color: #666;
-      background-color: rgba(0,0,0,1);
-      opacity: .5;
+      background-color: rgba(0,0,0,.5);
       vertical-align: top;
-  }
+}
+
+.formtastic input[type=submit] {
+	margin-right: 1em;
+	padding: .25em .5em;
+	box-shadow: -1px -1px #CCC;
+	border-radius: .75em;
+	color: #CCC;
+	background-color: #666;
+	background-color: rgba(0, 0, 0, .5);
+}
+
+.formtastic input[type=submit]:hover {
+	color: #FFF;
+	cursor: pointer;
+}
 
 .formtastic .text textarea {
     height: 15em;
     resize: none;
+    outline: 0;
+    overflow: auto;
 }
 
-.formtastic .string label, .formtastic .text label {
+.formtastic .error input,
+.formtastic .error textarea {
+	box-shadow: 1px 1px red;
+}
+
+.formtastic .errors {
+	text-shadow: 1px 1px black;
+	color: red;
+	padding-right: 3.5em;
+	font-size: .8em;
+}
+
+.formtastic .inline-errors {
+	display: none;
+}
+
+.formtastic .string label, 
+.formtastic .email label,
+.formtastic .text label {
     position: relative;
     top: 1em;
 }

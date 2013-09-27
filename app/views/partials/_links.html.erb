@@ -1,0 +1,12 @@
+<% if links %>
+	<div id="menu">
+	  <ul>
+	    <% links.each do |link| %>
+	        <li class="hover"><%= link_to(link.text, link.link) %></li>
+	    <% end %>
+	    <% if desktop and socials %>
+	    	<li class="social"><%= render partial: 'partials/socials', locals: { socials: socials } %></li>
+	    <% end %>
+	  </ul>
+	</div>
+<% end %>

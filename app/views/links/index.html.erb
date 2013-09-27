@@ -1,8 +1,1 @@
-<div id="menu">
-  <ul>
-    <% @links.each do |link| %>
-        <li class="hover"><%=link_to(link.text, link.link)%></li>
-    <% end %>
-    <%= render :template => 'socials/index' %>  
-  </ul>
-</div>
+<%= render partial: 'partials/links', locals: { links: @links, socials: @socials, desktop: @platform == 'desktop' } %>

@@ -3,7 +3,8 @@ class AboutController < ApplicationController
   before_filter :init_descriptions
 
   def index
-    @show = Show.current
+    @show = Show.current   
+    @title = 'About Us' 
   end
 
   def init_descriptions

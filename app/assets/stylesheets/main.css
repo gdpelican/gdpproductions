@@ -40,6 +40,18 @@ a img {
     border: none;
 }
 
+.clearfix:before,
+.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+}
+.clearfix {
+    zoom:1;
+}
+
 #gdp img {
     width: 10em;
 }
@@ -51,20 +63,12 @@ a img {
         width: 16.67em;
         top: -.33em;
         left: 1.25em;
-	z-index: 10;
+		z-index: 10;
         text-align: right;
         font-size: 3em;
         font-family: "rounded", Helvetica;
         text-shadow: 0, 0, 0, -4px 4px;
         text-shadow: rgba(0,0,0,.75) -4px 4px rgba(0,0,0,1);
-}
-
-#body {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	top: 0;
 }
 
 #menu {
@@ -110,7 +114,8 @@ a img {
 	-webkit-transform: rotate(-90deg); 
 	-moz-transform: rotate(-90deg);
 	-o-transform: rotate(-90deg);
-        writing-mode: tb-lr;
+    writing-mode: tb-lr;
+	
 	position: absolute;
 	bottom: -.15em;
 	font-size: 1.5em;
@@ -160,7 +165,7 @@ a img {
 	z-index: -1;
 }
 
-#imageInfo {
+#backgroundInfo #imageInfo {
     padding: .5em;
     position: absolute;
     bottom: 0;
@@ -199,124 +204,9 @@ a img {
 	color: white;	
 }
 
-.showText {
-}
-
 h2 {
 	padding: 0;
 	margin: 0;
-}
-
-.showTitle h2 {
-	padding-top: .1em;
-        display: inline;
-	font-family: "rounded", Helvetica;
-}
-
-.showTitle>a {
-    padding-left: 1em;
-    position: relative;
-    bottom: .25em;
-    font-family: 'rounded', Helvetica;
-}
-
-.showDates h2 {
-	font-family: arial;
-	font-size: .75em;
-	font-style: italic;
-}
-
-.showHeader {
-    position: relative;
-    border: 2px solid white;
-    padding: .5em;
-}
-
-.showHeaderDates {
-    text-align: center;
-    font-family: 'Rounded', Helvetica;
-}
-
-.showThumb {
-    width: 14em;
-    height: 14em;
-    position: absolute;
-    z-index: 10;
-    box-shadow: 0 0 2em 0 rgba(0, 0, 0, 1);
-}
-
-.showThumb img {
-    width: 14em;
-    height: 14em;
-}
-
-.showDescription {
-}
-
-.showMap {
-    height: 14em;
-    width: 100%;
-    color: black;
-}
-
-.showMapInfo {
-    position: absolute;
-    top: .5em;
-    right: .5em;
-    z-index: 10;
-    padding: .25em;
-    font-family: "rounded", Helvetica;
-    color: black;
-    width: 90%;
-    background-color: rgba(255, 255, 255, .5);
-}
-
-.showInfo {
-    padding: .5em;
-}
-
-.showTicket {
-    display: inline-block;
-}
-
-.showGallery {
-    width: 45em;
-    margin: auto;
-    overflow: auto;
-    bottom: 0;
-    text-align: center;
-    height: 4em;
-    padding-top: .5em;
-    border-radius: .5em;
-    white-space: nowrap;
-}
-
-.showGallery ul {
-}
-
-.showGallery li {
-    float: left;
-    white-space: nowrap;
-}
-
-.showGallery img {
-    height: 2.55em;
-    opacity: .5;
-    filter:alpha(opacity=70);
-    border: none;
-}
-
-.thumbnail img {
-	border: 1px solid white;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
 }
 
 #woDates h2, .showDates h2 {
@@ -340,7 +230,7 @@ h2 {
     right: 0;
 }
 
-.rounded, .roundedNoIE {
+.rounded {
     border-radius: .5em;
 }
 
@@ -378,8 +268,35 @@ h2 {
     font-family: "rounded", Helvetica;
 }
 
-.social span {
+.lazy-load {
+	display: none;
+}
+
+.showPage {
+    margin: 1.5em;
+}
+
+.showHeader {
     position: relative;
-    top: .1em;
-    right: 1.5em;
+    border: 2px solid white;
+    padding: .5em;
+}
+
+.showTitle h2 {
+	padding-top: .1em;
+        display: inline;
+	font-family: "rounded", Helvetica;
+}
+
+.showTitle>a {
+    padding-left: 1em;
+    position: relative;
+    bottom: .25em;
+    font-family: 'rounded', Helvetica;
+}
+
+.showDates h2 {
+	font-family: arial;
+	font-size: .75em;
+	font-style: italic;
 }

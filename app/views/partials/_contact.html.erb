@@ -1,0 +1,9 @@
+<% if message %>
+	<%= semantic_form_for message, url: contact_path do |f| %>
+		<%= f.semantic_errors :name, :email, :body %>
+		<%= f.input :name %>
+		<%= f.input :email, as: :email %>
+		<%= f.input :body, as: :text %>
+		<li><%= f.submit 'Send Email' %></li>
+	<% end %>
+<% end %>

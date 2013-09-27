@@ -1,11 +1,8 @@
 class ContactMailer < ActionMailer::Base
-  default :to => 'james.kiesel@gmail.com',
-          :from => 'contact@gdpproductions.com',
-          :template_path => 'contacts'
-
-  def contact_email(contact)
-    @contact = contact
-    mail :subject => contact.subject
+  default to: 'contact@gdpproductions.com'
+  
+  def contact_email(message)
+    @message = message
+    mail(from: message.email, subject: 'New message from #{message.name}')
   end
-
 end

@@ -1,18 +1,9 @@
 class ShowsController < ProtectedController
   
   before_filter :one_show, :only => [:show, :page]
-  before_filter :any_show, :only => [:index]
 
   def one_show
-    begin
-      @picture_mode = Integer(params[:id])
-    rescue
-      @picture_mode = 'current'
-    end
-  end
-  
-  def any_show
-    @picture_mode = 'any'
+    @background = Background.new session[:mobile], (Integer(params[:id]).to_s rescue 'current')
   end
   
   # GET /shows
@@ -107,18 +98,11 @@ class ShowsController < ProtectedController
     end
   end
   
-  def page
+  def info
     @show = Show.find(params[:id])
-    @page = params[:page]
-    @footer = false
-    
     respond_to do |format|
-      format.html { render :template => 'shows/pages/' + @page }
+      format.html
     end
-  end
-
-  def picture_mode
-    @picture_mode = @show.id
   end
   
 end

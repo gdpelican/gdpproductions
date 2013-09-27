@@ -1,19 +1,9 @@
 
-<%= render :template => 'links/index' %> 
-
 <div id="gdp"><%= link_to(image_tag('GDP.gif'), '/') %></div>
-<div id="pictureData"><%= render :template => 'picture_data/index' %></div>
 <div id="header"><%= @title %></div>
-<div id="content" class="transBack scroller">
-  <% if flash[:notice] %> 
-    <div id="notice" class="flash"><%= flash[:notice] %></div>
-  <% end %>
+<div id="content" class="transBack scroller"><%= yield %></div>
 
-  <% if flash[:error] %>
-    <div id="error" class="flash"><%= flash[:error] %></div>
-  <% end %>
-  <%= yield %>
-</div>
-<% if @current.end_date >= Date.today %>
-  <div id="whatson" class="hover"><%= render :template => 'whatson/index' %></div>
-<% end %>
+<%= render partial: 'partials/links', locals: { links: @links, socials: @socials, desktop: true } %>
+<%= render partial: 'partials/desktop/flash', locals: { flash: flash } %> 
+<%= render partial: 'partials/desktop/background_data', locals: { background: @background } %>
+<%= render partial: 'partials/desktop/whatson', locals: {current: @current } %>

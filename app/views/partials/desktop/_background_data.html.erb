@@ -1,0 +1,7 @@
+<% if !background.picture.nil? %>
+	<div id="background_data">
+	  <div id="image"><%= image_tag 'blank.gif', class: 'lazy-load', data: { src: background.picture[:url] } %></div>
+	  <div id="minimize" class="transBack roundFont hover">Check out the picture!</div>
+	  <div id="backgroundInfo"><%= render partial: 'partials/picture_data', locals: { picture: background.picture, mode: background.mode, is_background: true } %></div>
+	</div>
+<% end %>

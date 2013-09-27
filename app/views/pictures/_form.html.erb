@@ -1,4 +1,7 @@
-<%= form_for @picture, :html => {:multipart => true } do |f| %>
+<%= form_for @picture, url: show_pictures_url, html: {:multipart => true } do |f| %>
+  <div class="field">
+  	for <%= @show.title %>		
+  </div>
   <% if @picture.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
@@ -23,10 +26,6 @@
   <div class="field">
     <%= f.label :caption %><br />
     <%= f.text_field :caption %>
-  </div>
-  <div class="field">
-  	<%= f.label :show %>
-  	<%= f.collection_select(:show_id, Show.all, :id, :title) %>	
   </div>
   <div class="field">
         <%= f.label 'Cover Photo?' %><br/>

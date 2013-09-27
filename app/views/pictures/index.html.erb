@@ -1,1 +1,8 @@
-<%= image_tag @picture.picture.url(:original)%>
+<% if @show && !@show.pictures.empty? %>
+	<% @show.pictures.each do |p| %>
+		<span class="showGalleryImage">
+			<%= link_to image_tag(p.picture.url(@thumb_size || :thumb), class: 'thumbnail'), show_picture_path(@show.id, p.id), remote: !mobile? %>
+		</span>
+	<% end %>
+	<div id="hideGalleryLink" class="back-button roundFont"><%= link_to 'Back', show_path(@show.id) %></div>
+<% end %>

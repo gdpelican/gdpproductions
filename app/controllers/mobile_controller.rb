@@ -2,18 +2,16 @@ class MobileController < ApplicationController
   
   def on
     session[:mobile] = true
-    redirect_to :controller => :links, :action => :index
+    redirect
   end
   
   def off
     session[:mobile] = nil
-    redirect_to :controller => :about , :action => :index
+    redirect
   end
   
-  def show
-    respond_to do |format|
-      format.html # show.html.erb
-    end
+  def redirect
+    redirect_to controller: :root, action: :show
   end
   
 end

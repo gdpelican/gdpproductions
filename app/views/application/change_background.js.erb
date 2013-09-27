@@ -1,0 +1,14 @@
+var container = $('#image');
+var infoContainer = $('#imageInfo');
+var img = $('img', container);
+
+container.fadeOut(500, function() {
+	img.attr('src', '<%= @background.picture[:url] %>').one('load', function() {
+		infoContainer.find('.pictureCaption').html('<%= @background.picture[:caption] %>');
+		infoContainer.find('.pictureShow').html('<%= @background.picture[:title] %>');
+		infoContainer.find('.pictureShowDate').html('<%= @background.picture[:start_date] %>');
+		infoContainer.find('.picturePhotographer').html('<%= @background.picture[:photographer] %>');
+		$('#changePicture').attr('href', '/change_background/<%= @background.picture[:show_id] %>/<%= @background.picture[:id] %>');
+		container.fadeIn(1000);
+	});
+});

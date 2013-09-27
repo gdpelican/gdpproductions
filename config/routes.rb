@@ -1,35 +1,36 @@
 GDP::Application.routes.draw do
 
-  resources :socials
-
-  root :to => 'root#index'
+  root :to => 'root#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  match 'textile_preview' => 'textile_preview#show'
 
-  resources :venues, :shows, :pictures, :links, :pages
-  resources :picture_data, :only => :index
-  resources :sessions, :only => :create
+  resources :shows do
+    resources :pictures
+    member do get 'info' end
+  end
+  
+  resources :venues, :pages, :links, :socials
+  
   resources :about, :only => :index
-  resource :contact, :only => [:show, :create]
-
   #resources :people, :only => :new, :create
 
-  match 'shows/:id/:page' => 'shows#page'
+  match 'change_background/:mode(/:id)' => 'application#change_background'
 
+  resources :sessions, :only => :create
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#destroy'
 
   match 'mobile/on' => 'mobile#on'
   match 'mobile/off' => 'mobile#off'
-  match 'mobile/show' => 'mobile#show'
+    
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
+ 
   
-  match 'picture_data/:mode(/:id)' => 'picture_data#index', :format => 'json'
-
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+  # Keep in mind you can assign values other than :controller an2d :action
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
