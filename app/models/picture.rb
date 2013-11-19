@@ -33,6 +33,19 @@ class Picture < ActiveRecord::Base
     
     data
   end
+  
+  def traverse(direction)
+    index = show.pictures.index(self)
+    case(direction.to_sym)
+    when :prev then show.pictures[index-1]
+    when :next then show.pictures[index+1] || show.pictures[0]
+    end
+  end
+
+  def self.find(id, direction = nil)
+    picture = super(id)
+    if direction then picture.traverse(direction) else picture end
+  end
 
   def self.has_other_picture(show)
     if(show == nil)

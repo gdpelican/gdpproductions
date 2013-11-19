@@ -1,8 +1,14 @@
 <% if @show && !@show.pictures.empty? %>
-	<% @show.pictures.each do |p| %>
-		<span class="showGalleryImage">
-			<%= link_to image_tag(p.picture.url(@thumb_size || :thumb), class: 'thumbnail'), show_picture_path(@show.id, p.id), remote: !mobile? %>
-		</span>
-	<% end %>
+	<div id="galleryThumbs">
+		<% @show.pictures.each do |p| %>
+			<span id="showGalleryImage<%= p.id %>" class="showGalleryImage">
+				<%= link_to image_tag(p.picture.url(@thumb_size || :thumb), class: 'thumbnail lazy-load'), show_picture_path(@show.id, p.id), remote: !mobile?, class: 'thumbImage' %>
+			</span>
+		<% end %>
+	</div>
+	<div id="galleryViewport" class="hidden">
+		<%= image_tag 'loading.gif', alt: 'Loading. . .', class: 'loading'%>
+		<div class="pictureWrapper"></div>
+	</div>
 	<div id="hideGalleryLink" class="back-button roundFont"><%= link_to 'Back', show_path(@show.id) %></div>
 <% end %>

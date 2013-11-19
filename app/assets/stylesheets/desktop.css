@@ -2,6 +2,11 @@ body, html {
     overflow: hidden;
 }
 
+.offscreen {
+	position: absolute;
+	top: 99999px;
+}
+
 #desktop-body {
 	position: absolute;
 	left: 0;
@@ -100,21 +105,89 @@ body, html {
     color: black;
 }
 
+#galleryViewport,
 .showGalleryImage {
-	display: block;
-	height: 5em;
-	width: 5em;
-	float: left;
 	margin: 5px;
 	background: rgba(170, 170, 221, .1);
 	border-radius: 5px;
 	position: relative;
-	cursor: pointer;
+	cursor: pointer;	
 }
 
+#galleryViewport {
+	display: none;
+	width: 44.5em;	
+	min-height: 20em;
+}
+
+#galleryViewport .pictureView {
+	display: block;
+	margin: auto;
+	text-align: center;
+	max-height: 30em;
+	max-width: 43em;
+	padding: 15px .75em;
+}
+
+#galleryViewport:hover,
 .showGalleryImage:hover {
 	background: rgba(170, 170, 221, .25);
 	box-shadow: inset 0 0 5px #999;
+}
+
+#galleryViewport .pictureArrow {
+	width: 1.725em;
+	height: 3.5em;
+	position: absolute;
+	top: 45%;
+	opacity: .3;
+
+	-webkit-filter: drop-shadow(0 0 5px black);
+	filter: drop-shadow(0 0 5px black);
+}
+
+#galleryViewport .pictureArrow:hover {
+	opacity: .8;
+}
+
+#galleryViewport .pictureNext {
+	right: 1em;
+}
+
+#galleryViewport .picturePrev {
+	left: 1em;
+}
+
+#galleryViewport .pictureData {
+	z-index: 1;
+	position: absolute;
+	bottom: 15px;
+	width: 42em;
+	margin: 0 .75em;
+	background: rgba(0,0,0,.5);
+	padding: .5em;
+}
+
+#galleryViewport .pictureMat {
+	z-index: 0;
+	position: absolute;
+	top: 15px;
+	bottom: 15px;
+	left: .75em;
+	right: .75em;
+	background: rgba(0,0,0,.2);
+	box-shadow: 0 0 5px black;
+}
+
+.showGalleryImage {
+	height: 5em;
+	width: 5em;
+	float: left;
+	display: block;
+}
+
+.showGalleryImage.activeSquare .thumbnail {
+	display: none;
 }
 
 .showGalleryImage .thumbnail {
@@ -130,33 +203,6 @@ body, html {
 	left: 0;
 	bottom: 0;
 	right: 0;
-}
-
-.showGalleryImage .fullImage img {
-	display: block;
-	margin: auto;
-	max-height: 30em;
-	max-width: 43em;
-	padding-top: 15px;
-}
-
-.showGalleryImage .pictureData {
-	position: absolute;
-	bottom: 15px;
-	width: 42em;
-	margin: 0 .75em;
-	background: rgba(0,0,0,.5);
-	padding: .5em;
-}
-
-.showGalleryImage .pictureMat {
-	position: absolute;
-	top: 15px;
-	bottom: 15px;
-	left: .75em;
-	right: .75em;
-	background: rgba(0,0,0,.2);
-	box-shadow: 0 0 5px black;
 }
 
 .showMapInfo {
@@ -287,4 +333,11 @@ body, html {
 
 #contact p {
 	padding: 0 5em 0 10em;
+}
+
+.loading { 
+	width: 3%;
+	position: absolute;
+	top: 48.5%;
+	left: 48.5%;
 }

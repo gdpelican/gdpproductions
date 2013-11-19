@@ -14,6 +14,7 @@ GDP::Application.routes.draw do
   
   resources :about, :only => :index
   #resources :people, :only => :new, :create
+  match '/shows/:show_id/pictures/:id/:direction' => 'pictures#show', as: 'swap_picture_path', via: :get
 
   match 'change_background/:mode(/:id)' => 'application#change_background'
 
@@ -26,7 +27,6 @@ GDP::Application.routes.draw do
     
   match 'contact' => 'contact#new', :as => 'contact', :via => :get
   match 'contact' => 'contact#create', :as => 'contact', :via => :post
- 
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

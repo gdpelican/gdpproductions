@@ -21,12 +21,12 @@ class PicturesController < ProtectedController
   # GET /pictures/1.xml
   def show
 
-    @picture = Picture.find(params[:id])
+    @picture = Picture.find(params[:id], params[:direction])
     @footer = false
 
     respond_to do |format|
       format.html # show.html.erb
-      format.js { render 'show', locals: { picture: @picture.as_json(session[:mobile]) } }
+      format.js { render 'show', locals: { instant: false, picture: @picture.as_json(session[:mobile]) } }
     end
   end
 
@@ -53,7 +53,7 @@ class PicturesController < ProtectedController
   
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to(show_pictures_url(@picture), :notice => 'Picture was successfully created.') }
+        format.html { redirect_to(show_pictures_url(@show), :notice => 'Picture was successfully created.') }
       else
         format.html { render :action => "new" }
       end

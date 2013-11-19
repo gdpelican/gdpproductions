@@ -1,26 +1,12 @@
-var _activeSquare = $('.activeSquare');
-var _fullImage = _activeSquare.find('.fullImage');
+var html = '<%= escape_javascript(render partial: 'picture_data', locals: { picture: picture }) %>';
+var viewport = $('#galleryViewport');
+var wrapper = viewport.find('.pictureWrapper');
+var loading = viewport.find('.loading');
+var image = new Image();
 
-var _displayFullImage = function() {
-	_fullImage = _activeSquare.find('.fullImage');
-	_activeSquare.animate({width: '44.5em'}, 'slow')
-				 .animate({height: _getImageHeight(_fullImage) + 30 }, 'slow', function() {
-				 _fullImage.closest('.scroller').data('jsp').reinitialise();
-				 _fullImage.fadeIn('fast');
-	});
-}
-
-var _getImageHeight = function(el) {
-	el.css({visibility: 'hidden', display: 'block'});
-	var height = el.find('img').height();
-	el.css({visibility: 'visible', display: 'none'});
-	return height;
-}
-
-if(!_fullImage.length) {
-	_activeSquare.append('<%= escape_javascript(render partial: 'picture_data', locals: { picture: picture }) %>');
-	_fullImage = _activeSquare.find('.fullImage');
-	_fullImage.find('img').on('load', _displayFullImage);
-}	
-else
-	_displayFullImage();
+image.onload = function() {
+	wrapper.html(html).show();
+	loading.hide();
+	Desktop.reinitializeScroller(viewport);
+};
+image.src = '<%= picture[:url] %>';

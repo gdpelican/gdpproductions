@@ -1,5 +1,7 @@
-<div class="fullImage hidden">
-	<div class="pictureMat"></div>
-	<img alt="<%= picture[:alt] %>" src="<%= picture[:url] %>" />
-	<div class="pictureData"><%= render partial: 'partials/picture_data', locals: { picture: picture } %></div>
-</div>
+<%= image_tag picture[:url], alt: picture[:alt], class: 'pictureView' %>
+<%= content_tag :div, '', class: 'pictureData' do %>
+	<%= render partial: 'partials/picture_data', locals: { picture: picture } %>
+<% end %>
+<%= content_tag :div, '', class: 'pictureMat' %>
+<%= link_to image_tag('/assets/chevron_left.png'), swap_picture_path(picture[:show_id], picture[:id], :prev), remote: !mobile?, class: 'pictureArrow picturePrev' %>
+<%= link_to image_tag('/assets/chevron_right.png'), swap_picture_path(picture[:show_id], picture[:id], :next), remote: !mobile?, class: 'pictureArrow pictureNext' %>

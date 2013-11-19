@@ -1,5 +1,6 @@
 //= require jquery.scrollbars
 //= require jquery.jscrollpane.min
+//= require imgloaded
 
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
@@ -16,6 +17,8 @@ $(window).load(function() {
     $('#minimize').click(toggleContent);
 });
 
+Desktop = {};
+
 $(document).ready(function() {
 	
 		if(screen.width < 700) {
@@ -30,10 +33,9 @@ $(document).ready(function() {
 
 
         setTimeout(function() { $('#notice, #error').fadeOut('slow'); }, 2000);
-    	$('#whatson')
-		//.height($('#woTitle').width())
-		.css('padding-left', $('#woTitle').height())
-		.click(function() { window.location = "/shows/current"; });
+		$('#whatson')
+			.css('padding-left', $('#woTitle').height())
+			.click(function() { window.location = "/shows/current"; });
 	
 		$(window).resize(refresh);
 		refresh();
@@ -48,36 +50,44 @@ $(document).ready(function() {
         	}
         });
         
+        Desktop.reinitializeScroller = function(target) {
+        	var scroller = target.closest('.scroller');
+        	if(scroller.length && scroller.data('jsp') != null) {
+	        	scroller.data('jsp').reinitialise();    	
+	       	}
+        };
+        
         $('#showGalleryLink, #hideGalleryLink').click(function(e) {
         	e.preventDefault();
         	$('#showGallery, #showInfo, #showThumb, #mapInfo').slideToggle(function() {
-	        	$(this).closest('.scroller').data('jsp').reinitialise();    		
+				Desktop.reinitializeScroller($(this));
         	});
-        });  
-        
-        $('.showGalleryImage').on('click', 'a, .fullImage', function() { 
-        	var _this = $(this);
-        	if(_this.hasClass('fullImage')) {
-        		_this.fadeOut(function() {
-        			_this.parent().animate({ height: '5em' }, 'slow')
-        						  .animate({ width: '5em' }, 'slow', function() {
-        						  toggleSquareElements(_this);
-        			});
-        		});
-        	}
-        	else
-        		toggleSquareElements($(this)); 
+        });
+
+        var viewport = $('#galleryViewport');
+        var thumbs = $('#galleryThumbs');
+        var backLink = $('#hideGalleryLink');
+        $('#galleryThumbs').on('click', '.thumbImage', function() {
+        	viewport.find('.loading').show();
+        	thumbs.add(backLink).fadeOut(function() {
+        		viewport.fadeIn();
+        		Desktop.reinitializeScroller(viewport);
+        	});
+        });
+        $('#galleryViewport').on('click', '.pictureWrapper', function() {
+        	viewport.fadeOut(function() {
+        		viewport.find('.pictureView, .pictureData').html('').hide();
+        		thumbs.add(backLink).fadeIn();
+        		Desktop.reinitializeScroller(viewport);
+        	});
+        }).on('click', '.pictureArrow[data-remote=true]', function(e) {
+        	e.stopPropagation();
+        	e.preventDefault();
+        	viewport.find('.loading').show();
+        	$.rails.handleRemote($(this));
         });
 
 });
-
-function toggleSquareElements(el) {
-	var _square = el.parent();      	        	
-	_square.toggleClass('activeSquare')
-	_square.siblings().fadeToggle();
-	_square.find('.thumbnail').fadeToggle();
-	_square.closest('.scroller').data('jsp').reinitialise();
-};
 
 function renderMap() {
 
@@ -108,7 +118,7 @@ function makeMarker(location, map) {
     var ticketLink = $('#ticketLink');
     if (ticketLink.length) {
         imageLink = '/assets/mapMarker.png';
-        clickEvent = function() { window.location = ticketLink.html(); }
+        clickEvent = function() { window.location = ticketLink.html(); };
     }
     else
         imageLink = '/assets/mapMarker2.png';
@@ -137,8 +147,8 @@ function toggleContent() {
     switch(minimize.html()) {
         case hide:
             $('#menu ul li a').animate({'opacity': .3}).hover(
-                function() { $(this).animate({'opacity': 1}) },
-                function() { $(this).animate({'opacity': .3}) }
+                function() { $(this).animate({'opacity': 1}); },
+                function() { $(this).animate({'opacity': .3}); }
             );
             minimize.html(show); break;
         case show:
