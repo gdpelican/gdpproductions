@@ -45,7 +45,7 @@ gem 'uglifier'
 #gem 'newrelic_rpm'
 
 #Contact form
-gem 'contact_us'
+
 gem 'formtastic'
     
 # Use unicorn as the web server
