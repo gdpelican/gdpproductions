@@ -19,6 +19,7 @@ gem 'rake'
 group :production do
   # gems specifically for Heroku
   gem "pg"
+  gem 'heroku_rails_deflate'
 end
 
 
