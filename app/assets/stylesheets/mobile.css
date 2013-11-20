@@ -77,8 +77,8 @@
 #mobileFooter img {
 	padding: .5em;
     font-size: 2em;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.25em;
+    height: 1.25em;
 }
 
 #aboutList li {
@@ -206,25 +206,17 @@
     opacity: .3;
 }
 
-.picture-viewer.columns {
+#galleryThumbs {
     line-height: 0;
     -webkit-column-gap:   0px;
     -moz-column-gap:      0px;
     column-gap:           0px; 
-}
-
-.picture-viewer.columns-2 {
-    -webkit-column-count: 2;
-    -moz-column-count:    2;
-    column-count:         2;
-}
-.picture-viewer.columns-3 {
     -webkit-column-count: 3;
     -moz-column-count:    3;
-    column-count:         3;    
+    column-count:         3; 
 }
 
-.picture-viewer img {
+#galleryThumbs img {
     width: 100%;
     height: auto;
 }

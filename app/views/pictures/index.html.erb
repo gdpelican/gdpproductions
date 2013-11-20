@@ -2,7 +2,7 @@
 	<div id="galleryThumbs">
 		<% @show.pictures.each do |p| %>
 			<span id="showGalleryImage<%= p.id %>" class="showGalleryImage">
-				<%= link_to image_tag(p.picture.url(@thumb_size || :thumb), class: 'thumbnail lazy-load'), show_picture_path(@show.id, p.id), remote: !mobile?, class: 'thumbImage' %>
+				<%= link_to image_tag(p.picture.url(@thumb_size || :thumb), class: "thumbnail#{' lazy-load' if @platform == 'desktop'}"), show_picture_path(@show.id, p.id), remote: !mobile?, class: 'thumbImage' %>
 			</span>
 		<% end %>
 	</div>
