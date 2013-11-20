@@ -25,7 +25,7 @@ end
 
 #Amazon s3 attachments
 gem "paperclip", "~> 2.5"
-gem 'mini_magick'
+gem 'mini_magick', "~> 3.5.0"
 gem 'aws-sdk'
 
 #Geocoding
