@@ -43,7 +43,7 @@ gem 'high_voltage'
 gem 'uglifier'
 
 #New Relic
-#gem 'newrelic_rpm'
+gem 'newrelic_rpm'
 
 #Contact form
 
