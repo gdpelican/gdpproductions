@@ -8,7 +8,7 @@ container.fadeOut(500, function() {
 		infoContainer.find('.pictureShow').html('<%= @background.picture[:title] %>');
 		infoContainer.find('.pictureShowDate').html('<%= @background.picture[:start_date] %>');
 		infoContainer.find('.picturePhotographer').html('<%= @background.picture[:photographer] %>');
-		$('#changePicture').attr('href', '/change_background/<%= @background.picture[:show_id] %>/<%= @background.picture[:id] %>');
+		$('#changePicture').attr('href', '/change_background/<%= @background.mode %>/<%= @background.picture[:id] %>');
 		container.fadeIn(1000);
 	});
 });
