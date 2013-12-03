@@ -3,7 +3,8 @@ class ShowsController < ProtectedController
   before_filter :one_show, :only => [:show, :page]
 
   def one_show
-    @background = Background.new session[:mobile], (Integer(params[:id]).to_s rescue 'current')
+    mode = (params[:id] == 'current' and @current.end_date.nil?) ? 'any' : params[:id]
+    @background = Background.new session[:mobile], mode
   end
   
   # GET /shows

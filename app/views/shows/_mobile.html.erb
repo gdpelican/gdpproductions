@@ -2,7 +2,9 @@
   <div class="showText">
     <div class="showTitle"><h2><%= link_to(@show.title, "/shows/" + @show.id.to_s()) %></h2></div>
     <div class="showDesc"><%= @show.blurb %></div>
-    <div class="showDates"><h2><%= @show.start_date.strftime("%b %d") %> - <%= @show.end_date.strftime("%b %d, %Y") %> at <%= @show.venue.name %></h2></div>
+    <% if @show.start_date.present? and @show.end_date.present? %>
+    	<div class="showDates"><h2><%= @show.start_date.strftime("%b %d") %> - <%= @show.end_date.strftime("%b %d, %Y") %> at <%= @show.venue.name %></h2></div>
+  	<% end %>
   </div>
   <div class="showHeader rounded">
     <div class="showGrid roundFont">
@@ -14,22 +16,22 @@
       } %>
       <%= render :partial => 'square', :locals => {
                  :name => 'Map',
-                 :href => 'http://www.maps.google.com/?q=' + URI::encode(@show.venue.address),
+                 :href => 'http://www.maps.google.com/?q=' + URI::encode("#{@show.venue.address if @show.venue.present?}"),
                  :icon => 'flag',
-                 :condition => true
+                 :condition => @show.venue.present?
       } %>
       <%= render :partial => 'square', :locals => {
                  :name => 'Pics',
-                 :href => show_pictures_url(@show.id),
+                 :href => "#{show_pictures_url(@show.id) if @show.pictures.any?}",
                  :icon => 'camera',
-                 :condition => @show.pictures.count > 0
+                 :condition => @show.pictures.any?
       } %>
       
       <%= render :partial => 'square', :locals => {
                  :name => 'Info',
                  :href => show_info_url(@show.id),
                  :icon => 'info-sign',
-                 :condition => !@show.description.empty?
+                 :condition => @show.description.present?
       } %>
     </div>
     <div class="backButton roundFont hidden">Back</div>

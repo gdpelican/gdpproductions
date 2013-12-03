@@ -246,6 +246,11 @@ body, html {
 	z-index: 10;
 }
 
+#showInfo #showBlurb {
+	padding-left: 15em;
+	float: right;
+}
+
 .thumbnail img {
 	border: 1px solid white;
 	position: absolute;

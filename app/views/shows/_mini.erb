@@ -7,9 +7,11 @@
 			<h2><%= link_to(show.title, "/shows/" + show.id.to_s()) %></h2>
 			<%= (show.ticket_link.length > 0 and show.end_date >= Date.today) ? link_to('(Buy Tickets)', show.ticket_link) : '' %>
         </div>
-		<div class="showDates">
-			<h2><%= show.start_date.strftime("%b %d") %> - <%= show.end_date.strftime("%b %d, %Y") %> at <%= show.venue.name %></h2>
-		</div>
+        <% if show.start_date && show.end_date %>
+			<div class="showDates">
+				<h2><%= show.start_date.strftime("%b %d") %> - <%= show.end_date.strftime("%b %d, %Y") %> at <%= show.venue.name %></h2>
+			</div>
+		<% end %>
        	<div class="showDesc"><%= show.blurb %></div>
 	</div>
 </div>

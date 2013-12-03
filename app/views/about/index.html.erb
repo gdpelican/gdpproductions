@@ -25,12 +25,10 @@
 
 <div id="info">
 
-<% if @show %>
-  <div id="inTheWorks">
-    <h2 class="roundFont">What's in the works</h2>
-    <%= render :partial => 'shows/mini', :locals => {:show => @show} %>
-  </div>
-<% end %>
+<div id="inTheWorks">
+  <h2 class="roundFont">What's in the works</h2>
+  <%= render :partial => 'shows/mini', :locals => {:show => @current } %>
+</div>
 
 <div id="howToHelp">
     <h2 class="roundFont">Want to help out?</h2>

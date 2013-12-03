@@ -1,4 +1,4 @@
-<% if !current.nil? and current.end_date >= Date.today %>
+<% if !current.nil? and current.end_date and current.end_date >= Date.today %>
   <div id="whatson" class="hover">
 	<div id="woContainer" showid="<%= current.id %>">
 		<span id="woTitle">WHAT'S ON?</span>

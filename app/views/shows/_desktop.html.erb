@@ -1,18 +1,26 @@
 <div class="showPage">
-  <div id="showHeaderDates"><%= @show.start_date.strftime("%b %e").tr('0', 'O') %> - <%= @show.end_date.strftime("%b %e %Y").tr('0', 'O') %></div>
+  <% if @show.start_date.present? and @show.end_date.present? %>
+  	<div id="showHeaderDates"><%= @show.start_date.strftime("%b %e").tr('0', 'O') %> - <%= @show.end_date.strftime("%b %e %Y").tr('0', 'O') %></div>
+  <% end %>
   <div class="showHeader rounded clearfix">
   	<div id="showInfo">
-	    <div id="mapInfo" class="showMapInfo">
-	      <%= @show.venue.name %><br/>
-	      <%= @show.venue.address.tr('0', 'O') %><br/>
-	    </div>
+  		<% if @show.venue.present? %>
+		    <div id="mapInfo" class="showMapInfo">
+		      <%= @show.venue.name %><br/>
+		      <%= @show.venue.address.tr('0', 'O') %><br/>
+		    </div>
+		<% else %>
+			<div id="showBlurb"><%= @show.blurb %></div>
+	    <% end %>
 	    <div id="showThumb"><%= image_tag @show.thumb.url(:thumb) %></div>
 	    <div id="showMap" class="showMap"></div>
-	    <% if !@show.pictures.empty? %>	
+	    <% if @show.pictures.any? %>	
       	  <div id="showGalleryLink"><%= link_to (image_tag '/assets/viewGallery.png'), 'javascript:;' %></div>
 	    <% end %>
     </div>
 	<div id="showGallery" class="hidden"><%= render template: 'pictures/index' %></div>
   </div>
-  <div id="showDescription"><%= raw RedCloth.new(@show.description).to_html %></div>
+  <% if @show.venue.present? %>
+  	<div id="showDescription"><%= raw RedCloth.new(@show.description).to_html %></div>
+  <% end %>
 </div>

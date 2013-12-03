@@ -14,6 +14,7 @@ class Show < ActiveRecord::Base
   has_attached_file :thumb,
      :styles => {:thumb=> "250x250#"},
      :storage => :s3,
+     :default_url => '/assets/missing.jpg',
      :s3_credentials => "#{Rails.root}/config/s3.yml",
      :path => '/:style/:id/:filename',
      :bucket => 'GDProdThumbs-TEST'
@@ -27,8 +28,15 @@ class Show < ActiveRecord::Base
     if (upcoming.any?)
       upcoming.first
     else
-      last(:order => "end_date")
+      hiatus
     end
+  end
+  
+  def self.hiatus
+    Show.new(title: 'We\'re on hiatus!',
+             blurb: 'It\'s time for our winter retreat; we\'re off to someplace warm for a few months to thaw.' + 
+                    ' Check back next year for more info on some fun burlesque, a new fight show, and the triumphant return of Ubu!',
+             ticket_link: '')
   end
 
   def self.history
