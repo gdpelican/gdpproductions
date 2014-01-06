@@ -48,6 +48,8 @@ gem 'newrelic_rpm'
 #Contact form
 
 gem 'formtastic'
+
+gem 'rufus-scheduler'
     
 # Use unicorn as the web server
 # gem 'unicorn'
