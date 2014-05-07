@@ -5,9 +5,10 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development, :test do
-  # gems for local development
-  gem "sqlite3-ruby", "~> 1.3.0", :require => "sqlite3"
+  gem 'zeus'
 end
+
+gem 'pg'
 #jQuery with rails
 gem 'jquery-rails', '>= 1.0.12'
 
@@ -17,8 +18,6 @@ gem 'heroku'
 gem 'rake'
 
 group :production do
-  # gems specifically for Heroku
-  gem "pg"
   gem 'heroku_rails_deflate'
 end
 
