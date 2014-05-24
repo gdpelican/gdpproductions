@@ -33,9 +33,9 @@ class Show < ActiveRecord::Base
   end
   
   def self.hiatus
-    Show.new(title: 'We\'re on hiatus!',
-             blurb: 'It\'s time for our winter retreat; we\'re off to someplace warm for a few months to thaw.' + 
-                    ' Check back next year for more info on some fun burlesque, a new fight show, and the triumphant return of Ubu!',
+    Show.new(title: 'Stay tuned',
+             blurb: 'Watch this space! We\'ve got exciting news (and hopefully more cheap, cool, twisted fun)' + 
+                    ' headed your way soon!',
              ticket_link: '')
   end
 
