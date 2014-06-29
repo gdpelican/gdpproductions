@@ -41,6 +41,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.3)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     erubis (2.7.0)
     excon (0.25.3)
     execjs (2.0.2)
@@ -92,6 +93,10 @@ GEM
     pg (0.17.0)
     pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -122,6 +127,7 @@ GEM
     rubyzip (1.1.0)
     rufus-scheduler (3.0.7)
       tzinfo
+    slop (3.5.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -160,6 +166,7 @@ DEPENDENCIES
   newrelic_rpm
   paperclip (~> 2.5)
   pg
+  pry
   rails (= 3.2.11)
   rake
   rufus-scheduler

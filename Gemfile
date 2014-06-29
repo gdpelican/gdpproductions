@@ -17,6 +17,8 @@ gem 'heroku'
 
 gem 'rake'
 
+gem 'pry'
+
 group :production do
   gem 'heroku_rails_deflate'
 end

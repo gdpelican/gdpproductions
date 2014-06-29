@@ -1,58 +1,37 @@
 class ScaffoldController < ProtectedController
   
   def index
-    set_instance model.all, true
-    respond
+    set_instance model.all
+    get_respond
   end
 
   def show
     load_instance
-    respond
+    get_respond
   end
   
   def new
     set_instance model.new
-    respond
+    get_respond
   end
 
   def edit
     load_instance
-    respond
+    get_respond
   end
 
   def create
     set_instance model.new(params[controller_name.singularize.to_sym])
-
-    respond_to do |format|
-      if instance.save
-        format.html { redirect_to instance, notice: "#{controller_name.singularize.humanize} was successfully created." }
-        format.json { render json: instance, status: :created, location: instance }
-      else
-        format.html { render action: "new" }
-        format.json { render json: instance.errors, status: :unprocessable_entity }
-      end
-    end
+    post_respond instance.save, :new
   end
 
-  # PUT /socials/1
-  # PUT /socials/1.json
   def update
     load_instance
-
-    respond_to do |format|
-      if instance.update_attributes(params[controller_name.singluarize.to_sym])
-        format.html { redirect_to instance, notice: "#{controller_name.singularize.humanize} was successfully updated." }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: instance.errors, status: :unprocessable_entity }
-      end
-    end
+    post_respond instance.update_attributes(params[controller_name.singularize.to_sym]), :edit
   end
 
   def destroy
     load_instance.destroy
-
     respond_to do |format|
       format.html { redirect_to send "#{controller_name.pluralize}_url" }
       format.json { head :no_content }
@@ -61,32 +40,51 @@ class ScaffoldController < ProtectedController
   
   private
   
-  def respond(plural=false)
+  def get_respond
     respond_to do |format|
       format.html
-      format.xml { render xml: instance(plural) }
-      format.json { render json: instance(plural) }
+      format.xml { render xml: instance }
+      format.json { render json: instance }
+    end
+  end
+
+  def post_respond(success, failure_action)
+    respond_to do |format|
+      if success
+        format.html { redirect_to instance, notice: success_notice }
+        format.json { head :no_content }
+      else
+        format.html { render action: failure_action }
+        format.json { render json: instance.errors, status: :unprocessable_entity }
+      end
     end
   end
   
-  def instance(plural=false)
-    instance_variable_get variable_name(plural)
+  def instance
+    instance_variable_get variable_name
   end
   
-  def set_instance(value, plural=false)
-    instance_variable_set variable_name(plural), value
+  def set_instance(value)
+    instance_variable_set variable_name, value
   end
   
   def load_instance
     set_instance model.find(params[:id]) unless instance
   end
   
-  def variable_name(plural=false)
-    "@#{plural ? controller_name.pluralize : controller_name.singularize}"
+  def variable_name
+    case action_name
+    when 'index' then "@#{controller_name.pluralize}"
+    else              "@#{controller_name.singularize}"
+    end
   end
     
   def model
     controller_name.singularize.humanize.constantize
+  end
+
+  def success_notice
+    "#{controller_name.singularize.humanize} was successfully #{action_name}d."
   end
 
 end
