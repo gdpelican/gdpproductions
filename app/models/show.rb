@@ -14,7 +14,7 @@ class Show < ActiveRecord::Base
   has_attached_file :thumb,
      :styles => {:thumb=> "250x250#"},
      :storage => :s3,
-     :default_url => '/assets/missing.jpg',
+     :default_url => "/images/missing-#{ENV['LOCALE'].downcase}.jpg",
      :s3_credentials => "#{Rails.root}/config/s3.yml",
      :path => '/:style/:id/:filename',
      :bucket => 'GDProdThumbs-TEST'
@@ -33,10 +33,15 @@ class Show < ActiveRecord::Base
   end
   
   def self.hiatus
-    Show.new(title: 'Stay tuned',
-             blurb: 'Watch this space! We\'ve got exciting news (and hopefully more cheap, cool, twisted fun)' + 
-                    ' headed your way soon!',
-             ticket_link: '')
+    hiatus = case ENV['LOCALE']
+    when 'US' then { title: 'We\'ve gone international!', 
+                     blurb: 'We\'re currently off in Wellington, New Zealand, doing some really cool stuff! ' + 
+                    'Be sure to check it out, and watch this space for news, we\'ll be back stateside with ' +
+                    'more fast, twisted, cool, cheap theater soon.' }
+    when 'NZ' then { title: 'Stay tuned!', 
+                     blurb: 'We\'ve got more fast, twisted, cool, cheap theater in the pipeline, watch this space!' }
+    end
+    Show.new hiatus if hiatus
   end
 
   def self.history
