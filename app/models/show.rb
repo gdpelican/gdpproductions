@@ -13,11 +13,8 @@ class Show < ActiveRecord::Base
 
   has_attached_file :thumb,
      :styles => {:thumb=> "250x250#"},
-     :storage => :s3,
-     :default_url => "/images/missing-#{ENV['LOCALE'].downcase}.jpg",
-     :s3_credentials => "#{Rails.root}/config/s3.yml",
-     :path => '/:style/:id/:filename',
-     :bucket => 'GDProdThumbs-TEST'
+     :default_url => "/images/missing-#{ENV['LOCALE'].downcase}.jpg"
+
 
   scope :history, -> { order(start_date: :desc) }
 

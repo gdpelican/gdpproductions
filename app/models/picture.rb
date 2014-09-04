@@ -13,12 +13,7 @@ class Picture < ActiveRecord::Base
        :original => "1024x800",
        :mobile => "500x400",
        :thumb  => "250x250",
-       :tiny => "100x100"},
-     :storage => :s3,
-     :s3_credentials => "#{Rails.root}/config/s3.yml",
-     :path => "/:style/:id/:filename",
-     :bucket => 'GDProd-TEST'
-  
+       :tiny => "100x100"}  
   def as_json(mobile = false, options = nil)
     picture_photographer = photographer.presence || show.photographer
     data = { id: self.id, 
