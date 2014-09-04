@@ -2,6 +2,11 @@ class PicturesController < ProtectedController
   
   before_filter :get_show
   
+  def new
+    @picture = Picture.new
+    @show = Show.find(params[:show_id])
+  end
+
   def index
     @thumb_size = :thumb
     respond_to do |format|
