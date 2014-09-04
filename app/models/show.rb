@@ -19,6 +19,8 @@ class Show < ActiveRecord::Base
      :path => '/:style/:id/:filename',
      :bucket => 'GDProdThumbs-TEST'
 
+  scope :history, -> { order(start_date: :desc) }
+
   def formatted_start_date
     self.start_date.strftime("%b %Y").tr('0', 'O')
   end
@@ -42,10 +44,6 @@ class Show < ActiveRecord::Base
                      blurb: 'We\'ve got more fast, twisted, cool, cheap theater in the pipeline, watch this space!' }
     end
     Show.new hiatus if hiatus
-  end
-
-  def self.history
-    find(:all, :order => 'start_date DESC')
   end
   
   def self.thumb
