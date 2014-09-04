@@ -1,11 +1,14 @@
+<% default_link ||= shows_path %>
 <div id="show<%= show.id %>" class="show rounded hover">
 	<div class="showPic">
 		<%= link_to image_tag(show.thumb.url(:thumb), :class => 'rounded'), '/shows/' + show.id.to_s %>
 	</div>	
         <div class="showText">
 		<div class="showTitle hover">
-			<h2><%= link_to(show.title, "/shows/" + show.id.to_s()) %></h2>
-			<%= (show.ticket_link.length > 0 and show.end_date >= Date.today) ? link_to('(Buy Tickets)', show.ticket_link) : '' %>
+			<h2>
+			  <%= link_to(show.title, show.persisted? ? "/shows/" + show.id.to_s() : default_link) %></h2>
+			</h2>
+			<%= (show.ticket_link.present? && show.end_date >= Date.today) ? link_to('(Buy Tickets)', show.ticket_link) : '' %>
         </div>
         <% if show.start_date && show.end_date %>
 			<div class="showDates">

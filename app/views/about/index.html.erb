@@ -12,8 +12,7 @@
 <% end %>
 
 <div id="intro">
-  Welcome to GDP Productions, Philadelphia's finest renegade theater experience.<br/>
-  We're a group of individuals committed to providing theater for the masses through four simple principles:
+  <%= render_locale_partial 'intro' %>
 </div>
 
 <ul id="aboutList">
@@ -26,8 +25,7 @@
 <div id="info">
 
 <div id="inTheWorks">
-  <h2 class="roundFont">What's in the works</h2>
-  <%= render :partial => 'shows/mini', :locals => {:show => @current } %>
+  <%= render_locale_partial 'in_the_works' %>
 </div>
 
 <div id="howToHelp">
