@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+  def render_locale_partial(partial)
+    return unless locale = ENV.fetch('LOCALE', nil)
+    render "partials/locales/#{locale.downcase}/#{partial}", locale: locale
+  end
+
   def login_path
     '/login'
   end
