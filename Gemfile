@@ -21,6 +21,7 @@ gem 'pry'
 
 group :production do
   gem 'heroku_rails_deflate'
+  gem 'rails_12factor'
 end
 
 
