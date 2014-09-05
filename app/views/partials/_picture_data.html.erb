@@ -6,7 +6,7 @@
     <li class="pictureShowDate"><%= picture[:start_date] %></li>
     <li class="picturePhotographer"><%= picture[:photographer] %></li>
     <% if (is_background || false) and picture[:has_others] %>
-      <%= link_to 'Change Background', '/change_background/' + (mode || 'any') + '/' + picture[:id].to_s, remote: true, id: 'changePicture', class: 'hover',  %>
+      <%= link_to 'Change Background', '/change_background/' + (mode || 'any') + '/' + picture[:id].to_s, remote: true, id: 'changePicture', class: 'hover' %>
     <% end %>
   </ul>
 <% end %>
