@@ -9,11 +9,13 @@ class Picture < ActiveRecord::Base
   validates_attachment_presence :picture
 
   has_attached_file :picture,
-     :styles => {
+    :path => "pictures/:style/:id/:filename",
+    :styles => {
        :original => "1024x800",
        :mobile => "500x400",
        :thumb  => "250x250",
-       :tiny => "100x100"}  
+       :tiny => "100x100"}
+
   def as_json(mobile = false, options = nil)
     picture_photographer = photographer.presence || show.photographer
     data = { id: self.id, 

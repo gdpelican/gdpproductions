@@ -12,8 +12,9 @@ class Show < ActiveRecord::Base
   validates_attachment_presence :thumb
 
   has_attached_file :thumb,
-     :styles => {:thumb=> "250x250#"},
-     :default_url => "/images/missing-#{ENV['LOCALE'].downcase}.jpg"
+    :path => "thumbs/:style/:id/:filename",
+    :styles => {:thumb=> "250x250#"},
+    :default_url => "/images/missing-#{ENV['LOCALE'].downcase}.jpg"
 
 
   scope :history, -> { order(start_date: :desc) }
