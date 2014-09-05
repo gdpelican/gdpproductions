@@ -1,4 +1,4 @@
-class PicturesController < ProtectedController
+class PicturesController < ScaffoldController
   
   before_filter :get_show
   
@@ -22,6 +22,17 @@ class PicturesController < ProtectedController
     respond_to do |format|
       format.html # show.html.erb
       format.js { render 'show', locals: { instant: false, picture: @picture.as_json(session[:mobile]) } }
+    end
+  end
+
+  def create
+    @picture = Picture.new(params[:picture].merge(show_id: @show.id))
+    respond_to do |format|
+      if @picture.save
+        format.html { redirect_to [@show, @picture], notice: success_notice }
+      else
+        format.html { render action: :new }
+      end
     end
   end
 
