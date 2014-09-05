@@ -3,13 +3,13 @@
   <div id="latlng" class="hidden"><%= @show.venue.latitude + ';' + @show.venue.longitude %></div>
 <% end %>
   
-<% if @show.ticket_link.length > 0 and @show.end_date >= Date.today %>
+<% if @show.ticket_link.present? && @show.end_date >= Date.today %>
   <div id="ticketLink" class="hidden"><%=  @show.ticket_link %></div>
 <% end %>
 
 <%= render :partial => @platform %>  
 
 <% if session[:id] %>
-  <%= link_to 'Edit', edit_show_path(@show) %> |
+  <%= link_to 'Edit', edit_show_path(@show) if @show.persisted? %> |
   <%= link_to 'Back', shows_path %>
 <% end %>
