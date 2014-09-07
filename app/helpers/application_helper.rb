@@ -1,5 +1,12 @@
 module ApplicationHelper
 
+  def locale_title_image
+    case ENV.fetch('LOCALE', nil)
+    when 'NZ' then image_tag('GDPNZ.png')
+    else           image_tag('GDP.gif')
+    end
+  end
+
   def render_locale_partial(partial)
     return unless locale = ENV.fetch('LOCALE', nil)
     render "partials/locales/#{locale.downcase}/#{partial}", locale: locale
