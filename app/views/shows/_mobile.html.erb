@@ -12,7 +12,7 @@
                  :name => 'Tickets',
                  :href => @show.ticket_link,
                  :icon => 'barcode',
-                 :condition => !@show.ticket_link.empty? && @show.end_date >= Date.today
+                 :condition => !@show.ticket_link.present? && @show.end_date.present? && @show.end_date >= Date.today
       } %>
       <%= render :partial => 'square', :locals => {
                  :name => 'Map',
